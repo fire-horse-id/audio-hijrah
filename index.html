@@ -1,232 +1,134 @@
 <!DOCTYPE html>
-<html lang="id" class="dark scroll-smooth">
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dev Portfolio PRO MAX</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevPRO MAX</title>
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
   <style>
-    body { font-family: 'Inter', sans-serif; }
-
-    /* Aurora animated */
-    .aurora {
-      background:
-        radial-gradient(circle at 20% 30%, #00f0ff22, transparent 40%),
-        radial-gradient(circle at 80% 70%, #a855f722, transparent 40%),
-        radial-gradient(circle at 50% 50%, #22c55e22, transparent 40%);
-      animation: auroraMove 10s infinite alternate;
-    }
-    @keyframes auroraMove {
-      0% { background-position: 0% 0%, 100% 100%, 50% 50%; }
-      100% { background-position: 20% 40%, 80% 60%, 60% 40%; }
-    }
+    body { font-family: Inter, sans-serif; }
 
     .glass {
       backdrop-filter: blur(20px);
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
     }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: 0.8s ease;
-    }
-    .fade-in.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Loader */
-    #loader {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #020617;
-      z-index: 9999;
-    }
   </style>
 </head>
 
-<body class="bg-gray-950 text-white aurora">
+<body class="bg-[#020617] text-white">
 
-<!-- LOADER -->
-<div id="loader">
-  <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-cyan-400"></div>
-</div>
+<div class="flex md:flex-row flex-col min-h-screen">
 
-<!-- NAVBAR -->
-<header class="fixed w-full z-50 glass">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    <h1 class="font-bold text-xl">DevPRO</h1>
+  <!-- SIDEBAR (DESKTOP) -->
+  <aside class="hidden md:flex flex-col w-64 p-4 border-r border-white/10 glass">
+    <h1 class="text-xl font-bold mb-6">DevPRO</h1>
 
-    <nav class="hidden md:flex gap-6">
-      <a href="#home" class="nav-link">Home</a>
-      <a href="#dashboard" class="nav-link">Dashboard</a>
-      <a href="#produk" class="nav-link">Produk</a>
-      <a href="#about" class="nav-link">About</a>
-      <a href="#contact" class="nav-link">Contact</a>
+    <nav class="flex flex-col gap-3 text-sm">
+      <button onclick="showPage('home')" class="nav-btn">🏠 Home</button>
+      <button onclick="showPage('produk')" class="nav-btn">📦 Produk</button>
+      <button onclick="showPage('dashboard')" class="nav-btn">📊 Dashboard</button>
+      <button onclick="showPage('legal')" class="nav-btn">📜 Legal</button>
+      <button onclick="showPage('contact')" class="nav-btn">☎ Contact</button>
     </nav>
 
-    <div class="flex gap-3">
-      <button onclick="toggleTheme()" class="px-3 py-1 bg-white/10 rounded">🌙</button>
-      <button onclick="toggleMenu()" class="md:hidden">☰</button>
-    </div>
-  </div>
+    <button onclick="toggleTheme()" class="mt-auto bg-white/10 p-2 rounded-lg">🌙 Mode</button>
+  </aside>
 
-  <div id="menu" class="hidden flex-col px-6 pb-4 md:hidden">
-    <a href="#home">Home</a>
-    <a href="#dashboard">Dashboard</a>
-    <a href="#produk">Produk</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </div>
-</header>
+  <!-- MAIN -->
+  <main class="flex-1 p-4 md:p-8 space-y-6">
 
-<!-- HERO -->
-<section id="home" class="min-h-screen flex items-center justify-center text-center px-6 fade-in">
-  <div>
-    <h1 class="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-      Developer PRO MAX 🚀
-    </h1>
-    <p class="text-gray-300 mb-6">Build modern apps with premium UX</p>
-    <a href="#produk" class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg shadow-lg">
-      Explore Produk
-    </a>
-  </div>
-</section>
+    <!-- HOME -->
+    <section id="home" class="page space-y-6">
+      <div class="glass p-6 rounded-2xl">
+        <h2 class="text-3xl font-bold">Developer Modern 🚀</h2>
+        <p class="text-gray-400">Build scalable apps & premium UI</p>
+      </div>
 
-<!-- DASHBOARD -->
-<section id="dashboard" class="py-20 px-6 fade-in">
-  <h2 class="text-3xl font-bold text-center mb-10">Dashboard</h2>
-  <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-    <div class="glass p-6 rounded-xl text-center hover:scale-105 transition">
-      <h3>Projects</h3><p class="text-3xl">25+</p>
-    </div>
-    <div class="glass p-6 rounded-xl text-center hover:scale-105 transition">
-      <h3>Clients</h3><p class="text-3xl">50+</p>
-    </div>
-    <div class="glass p-6 rounded-xl text-center hover:scale-105 transition">
-      <h3>Experience</h3><p class="text-3xl">5y</p>
-    </div>
-  </div>
-</section>
+      <div class="grid grid-cols-3 gap-4">
+        <div class="glass p-4 rounded-xl text-center">25+<br><span class="text-sm text-gray-400">Project</span></div>
+        <div class="glass p-4 rounded-xl text-center">50+<br><span class="text-sm text-gray-400">Client</span></div>
+        <div class="glass p-4 rounded-xl text-center">5y<br><span class="text-sm text-gray-400">Exp</span></div>
+      </div>
+    </section>
 
-<!-- PRODUK FILTER -->
-<section id="produk" class="py-20 px-6 fade-in">
-  <h2 class="text-3xl font-bold text-center mb-6">Produk</h2>
+    <!-- PRODUK -->
+    <section id="produk" class="page hidden">
+      <h2 class="text-2xl mb-4">Produk</h2>
 
-  <div class="flex justify-center gap-3 mb-6">
-    <button onclick="filter('all')" class="btn">All</button>
-    <button onclick="filter('web')" class="btn">Web</button>
-    <button onclick="filter('app')" class="btn">App</button>
-  </div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="glass p-4 rounded-xl">
+          <h3 class="font-bold">Web App</h3>
+          <p class="text-sm text-gray-400">Dashboard modern</p>
+        </div>
+        <div class="glass p-4 rounded-xl">
+          <h3 class="font-bold">Mobile App</h3>
+          <p class="text-sm text-gray-400">Android/iOS</p>
+        </div>
+      </div>
+    </section>
 
-  <div id="products" class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-    <div class="glass p-6 rounded-xl product web">
-      <h3>Web App</h3>
-      <button onclick="openModal('Web App Detail')" class="mt-3 bg-cyan-500 px-3 py-1 rounded">Detail</button>
-    </div>
-    <div class="glass p-6 rounded-xl product app">
-      <h3>Mobile App</h3>
-      <button onclick="openModal('Mobile App Detail')" class="mt-3 bg-purple-500 px-3 py-1 rounded">Detail</button>
-    </div>
-  </div>
-</section>
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="page hidden">
+      <h2 class="text-2xl mb-4">Dashboard</h2>
+      <div class="glass p-6 rounded-xl">
+        Analytics & data user (siap integrasi backend)
+      </div>
+    </section>
 
-<!-- MODAL -->
-<div id="modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center">
-  <div class="bg-gray-900 p-6 rounded-xl max-w-md">
-    <h3 id="modalText"></h3>
-    <button onclick="closeModal()" class="mt-4 bg-red-500 px-4 py-2 rounded">Close</button>
-  </div>
+    <!-- LEGAL -->
+    <section id="legal" class="page hidden space-y-4">
+      <div class="glass p-5 rounded-xl">
+        <h3 class="font-bold">Privacy Policy</h3>
+        <p class="text-sm text-gray-400">Kami menjaga data pengguna...</p>
+      </div>
+
+      <div class="glass p-5 rounded-xl">
+        <h3 class="font-bold">Terms & Conditions</h3>
+        <p class="text-sm text-gray-400">Dengan menggunakan layanan ini...</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="page hidden">
+      <h2 class="text-2xl mb-4">Contact</h2>
+
+      <form class="space-y-3 max-w-md">
+        <input class="w-full p-3 bg-white/10 rounded-lg" placeholder="Nama">
+        <input class="w-full p-3 bg-white/10 rounded-lg" placeholder="Email">
+        <textarea class="w-full p-3 bg-white/10 rounded-lg" placeholder="Pesan"></textarea>
+
+        <button class="w-full py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl">
+          Kirim
+        </button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- BOTTOM NAV (MOBILE) -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 grid grid-cols-5 bg-black/80 backdrop-blur-lg border-t border-white/10">
+    <button onclick="showPage('home')" class="p-3 text-xs">🏠</button>
+    <button onclick="showPage('produk')" class="p-3 text-xs">📦</button>
+    <button onclick="showPage('dashboard')" class="p-3 text-xs">📊</button>
+    <button onclick="showPage('legal')" class="p-3 text-xs">📜</button>
+    <button onclick="showPage('contact')" class="p-3 text-xs">☎</button>
+  </nav>
+
 </div>
-
-<!-- ABOUT -->
-<section id="about" class="py-20 text-center fade-in">
-  <h2 class="text-3xl mb-4">About</h2>
-  <p class="text-gray-400 max-w-xl mx-auto">Developer modern dengan fokus UI/UX premium.</p>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="py-20 px-6 fade-in">
-  <h2 class="text-3xl text-center mb-6">Contact</h2>
-  <form onsubmit="sendMsg(event)" class="max-w-xl mx-auto space-y-4">
-    <input class="w-full p-3 bg-white/10 rounded" placeholder="Nama">
-    <input class="w-full p-3 bg-white/10 rounded" placeholder="Email">
-    <textarea class="w-full p-3 bg-white/10 rounded" placeholder="Pesan"></textarea>
-    <button class="w-full py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded">Kirim</button>
-  </form>
-</section>
-
-<!-- TOAST -->
-<div id="toast" class="hidden fixed bottom-5 right-5 bg-green-500 px-4 py-2 rounded">
-  Pesan terkirim!
-</div>
-
-<!-- FOOTER -->
-<footer class="text-center py-10 text-gray-500">© 2026 PRO MAX</footer>
 
 <script>
-  // Loader
-  window.onload = () => document.getElementById("loader").style.display = "none";
+function showPage(id) {
+  document.querySelectorAll(".page").forEach(p => p.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+}
 
-  function toggleMenu() {
-    document.getElementById("menu").classList.toggle("hidden");
-  }
-
-  function toggleTheme() {
-    document.documentElement.classList.toggle("dark");
-    localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
-  }
-
-  if (localStorage.theme === "light") {
-    document.documentElement.classList.remove("dark");
-    document.body.classList.replace("bg-gray-950","bg-white");
-    document.body.classList.replace("text-white","text-black");
-  }
-
-  // Fade animation
-  const faders = document.querySelectorAll(".fade-in");
-  window.addEventListener("scroll", () => {
-    faders.forEach(el => {
-      if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-        el.classList.add("show");
-      }
-    });
-  });
-
-  // Filter
-  function filter(type) {
-    document.querySelectorAll(".product").forEach(p => {
-      p.style.display = (type === 'all' || p.classList.contains(type)) ? "block" : "none";
-    });
-  }
-
-  // Modal
-  function openModal(text) {
-    document.getElementById("modalText").innerText = text;
-    document.getElementById("modal").classList.remove("hidden");
-  }
-  function closeModal() {
-    document.getElementById("modal").classList.add("hidden");
-  }
-
-  // Contact fake send
-  function sendMsg(e) {
-    e.preventDefault();
-    const toast = document.getElementById("toast");
-    toast.classList.remove("hidden");
-    setTimeout(()=> toast.classList.add("hidden"),3000);
-  }
+function toggleTheme() {
+  document.body.classList.toggle("bg-white");
+  document.body.classList.toggle("text-black");
+}
 </script>
 
 </body>
