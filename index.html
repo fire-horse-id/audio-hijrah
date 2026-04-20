@@ -3,9 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DevUI 2026 PRO MAX</title>
+<title>DevUI PRO 2026</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
+
+<!-- ICON LIBRARY -->
+<script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
 body {
@@ -15,20 +18,18 @@ body {
               #020617;
 }
 
-/* glass */
 .glass {
   backdrop-filter: blur(20px);
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.08);
 }
 
-/* page layer */
 .page {
   position: absolute;
   inset: 0;
   padding: 20px;
   overflow-y: auto;
-  transition: all 0.4s ease;
+  transition: all .4s ease;
 }
 
 .page-hidden {
@@ -42,10 +43,22 @@ body {
   transform: translateX(0);
 }
 
-/* hover */
-.card:hover {
-  transform: translateY(-5px);
-  transition: .3s;
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: .2s;
+}
+
+.nav-btn:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
 }
 </style>
 </head>
@@ -58,73 +71,73 @@ body {
   <aside class="hidden md:flex flex-col w-64 p-5 glass">
     <h1 class="text-xl font-bold mb-8">DevUI</h1>
 
-    <nav class="space-y-2">
-      <button onclick="go('home')" class="nav">Home</button>
-      <button onclick="go('produk')" class="nav">Produk</button>
-      <button onclick="go('dashboard')" class="nav">Dashboard</button>
-      <button onclick="go('legal')" class="nav">Legal</button>
-      <button onclick="go('contact')" class="nav">Contact</button>
+    <nav class="space-y-2 text-sm">
+      <button onclick="go('home')" class="nav-btn"><i data-lucide="home" class="icon"></i>Home</button>
+      <button onclick="go('produk')" class="nav-btn"><i data-lucide="box" class="icon"></i>Produk</button>
+      <button onclick="go('dashboard')" class="nav-btn"><i data-lucide="bar-chart-3" class="icon"></i>Dashboard</button>
+      <button onclick="go('legal')" class="nav-btn"><i data-lucide="file-text" class="icon"></i>Legal</button>
+      <button onclick="go('contact')" class="nav-btn"><i data-lucide="mail" class="icon"></i>Contact</button>
     </nav>
   </aside>
 
-  <!-- APP VIEW -->
+  <!-- APP -->
   <div class="flex-1 relative overflow-hidden">
 
     <!-- HOME -->
     <div id="home" class="page page-active space-y-6">
       <div class="glass p-6 rounded-2xl">
-        <h2 class="text-3xl font-bold">Home</h2>
-        <p class="text-gray-400">Welcome to modern developer UI</p>
+        <h2 class="text-3xl font-bold">Welcome 🚀</h2>
+        <p class="text-gray-400">Modern developer interface</p>
+      </div>
+
+      <!-- SOCIAL -->
+      <div class="flex gap-4">
+        <a href="#" class="glass p-3 rounded-xl hover:bg-white/10">
+          <i data-lucide="github"></i>
+        </a>
+        <a href="#" class="glass p-3 rounded-xl hover:bg-white/10">
+          <i data-lucide="linkedin"></i>
+        </a>
+        <a href="#" class="glass p-3 rounded-xl hover:bg-white/10">
+          <i data-lucide="twitter"></i>
+        </a>
       </div>
     </div>
 
     <!-- PRODUK -->
-    <div id="produk" class="page page-hidden space-y-6">
-      <h2 class="text-2xl">Produk</h2>
+    <div id="produk" class="page page-hidden">
+      <h2 class="text-2xl mb-4">Produk</h2>
 
       <div class="grid md:grid-cols-3 gap-4">
-        <div class="glass p-5 rounded-xl card">
-          <h3 class="font-bold">SaaS App</h3>
-          <p class="text-gray-400 text-sm">Dashboard modern</p>
-        </div>
-        <div class="glass p-5 rounded-xl card">
-          <h3 class="font-bold">Mobile App</h3>
-          <p class="text-gray-400 text-sm">Android/iOS</p>
+        <div class="glass p-5 rounded-xl">
+          <h3 class="font-bold flex items-center gap-2">
+            <i data-lucide="layout-dashboard"></i> SaaS Dashboard
+          </h3>
         </div>
       </div>
     </div>
 
     <!-- DASHBOARD -->
-    <div id="dashboard" class="page page-hidden space-y-6">
-      <h2 class="text-2xl">Dashboard</h2>
-
-      <div class="glass p-6 rounded-xl">
-        <p class="text-gray-400">Analytics (siap backend)</p>
+    <div id="dashboard" class="page page-hidden">
+      <h2 class="text-2xl mb-4">Dashboard</h2>
+      <div class="glass p-6 rounded-xl flex items-center gap-2">
+        <i data-lucide="activity"></i>
+        <span>Analytics data</span>
       </div>
     </div>
 
     <!-- LEGAL -->
-    <div id="legal" class="page page-hidden space-y-6">
-
+    <div id="legal" class="page page-hidden space-y-4">
       <div class="glass p-6 rounded-xl">
-        <h3 class="text-xl font-bold mb-2">Privacy Policy</h3>
-        <p class="text-gray-400 text-sm">
-          Kami menjaga keamanan data pengguna dengan standar modern encryption,
-          tidak menyalahgunakan data, dan menjaga privasi sepenuhnya.
-        </p>
+        <h3 class="flex items-center gap-2 font-bold">
+          <i data-lucide="shield"></i> Privacy Policy
+        </h3>
+        <p class="text-gray-400 text-sm">Data aman & terenkripsi.</p>
       </div>
-
-      <div class="glass p-6 rounded-xl">
-        <h3 class="text-xl font-bold mb-2">Terms & Conditions</h3>
-        <p class="text-gray-400 text-sm">
-          Pengguna wajib menggunakan layanan secara legal dan tidak melanggar hukum.
-        </p>
-      </div>
-
     </div>
 
     <!-- CONTACT -->
-    <div id="contact" class="page page-hidden space-y-6">
+    <div id="contact" class="page page-hidden space-y-4">
       <h2 class="text-2xl">Contact</h2>
 
       <form class="space-y-3 max-w-md">
@@ -132,8 +145,8 @@ body {
         <input class="w-full p-3 bg-white/10 rounded-xl" placeholder="Email">
         <textarea class="w-full p-3 bg-white/10 rounded-xl" placeholder="Pesan"></textarea>
 
-        <button class="w-full py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl">
-          Kirim
+        <button class="w-full py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl flex items-center justify-center gap-2">
+          <i data-lucide="send"></i> Kirim
         </button>
       </form>
     </div>
@@ -143,18 +156,20 @@ body {
 </div>
 
 <!-- MOBILE NAV -->
-<div class="md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 flex gap-3 px-5 py-3 rounded-full glass">
-  <button onclick="go('home')">🏠</button>
-  <button onclick="go('produk')">📦</button>
-  <button onclick="go('dashboard')">📊</button>
-  <button onclick="go('contact')">☎</button>
+<div class="md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 flex gap-4 px-6 py-3 rounded-full glass">
+  <button onclick="go('home')"><i data-lucide="home"></i></button>
+  <button onclick="go('produk')"><i data-lucide="box"></i></button>
+  <button onclick="go('dashboard')"><i data-lucide="bar-chart-3"></i></button>
+  <button onclick="go('contact')"><i data-lucide="mail"></i></button>
 </div>
 
 <script>
+lucide.createIcons();
+
 function go(id) {
   document.querySelectorAll('.page').forEach(p => {
-    p.classList.remove('page-active');
     p.classList.add('page-hidden');
+    p.classList.remove('page-active');
   });
 
   const el = document.getElementById(id);
