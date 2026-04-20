@@ -1,13 +1,145 @@
-<main class="pt-32 pb-20 px-6 max-w-7xl mx-auto min-h-screen">
-    <h2 class="text-4xl font-black mb-12">Produk & Proyek</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="glass p-6 rounded-[2rem] group hover:scale-[1.02] transition-all">
-            <div class="h-48 bg-primary/20 rounded-2xl mb-6 flex items-center justify-center">
-                <span class="material-symbols-outlined text-6xl text-primary">dashboard_customize</span>
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | FireHorse.id</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Manrope', 'sans-serif'] },
+                    colors: { primary: '#4a4bd7', secondary: '#006b60' }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .aurora-bg {
+            background: radial-gradient(circle at 10% 20%, rgba(74, 75, 215, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(0, 107, 96, 0.15) 0%, transparent 40%);
+        }
+        .glass { @apply backdrop-blur-xl bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/5 shadow-2xl; }
+        .product-card:hover .glow-effect { opacity: 1; }
+    </style>
+</head>
+
+<body class="bg-[#f7f9fb] dark:bg-[#0b0c0d] text-[#2d3337] dark:text-[#f7f9fb] transition-colors duration-500 font-sans min-h-screen flex flex-col">
+    
+    <div class="fixed inset-0 aurora-bg -z-10"></div>
+
+    <nav class="fixed top-0 w-full z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-black flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">bolt</span> FireHorse.id
+            </a>
+            <div class="hidden md:flex gap-8 items-center font-semibold text-sm">
+                <a href="index.html" class="hover:text-primary transition-all">Home</a>
+                <a href="product.html" class="text-primary">Products</a>
+                <a href="contact.html" class="hover:text-primary transition-all">Contact</a>
+                <button onclick="toggleTheme()" class="material-symbols-outlined p-2 hover:bg-white/10 rounded-full transition-colors">contrast</button>
             </div>
-            <h3 class="text-2xl font-bold mb-2">OSINT Dashboard</h3>
-            <p class="opacity-60 mb-6">Alat pengumpul data intelijen publik yang cepat dan akurat.</p>
-            <button class="w-full py-3 bg-white/5 rounded-xl font-bold hover:bg-primary hover:text-white transition-all">Detail Proyek</button>
+            <button class="md:hidden material-symbols-outlined">menu</button>
         </div>
+    </nav>
+
+    <header class="pt-40 pb-12 px-6 max-w-7xl mx-auto w-full">
+        <span class="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-4 inline-block">Showcase</span>
+        <h1 class="text-5xl md:text-6xl font-black mb-4">Inovasi & <span class="text-primary">Produk.</span></h1>
+        <p class="text-lg opacity-60 max-w-2xl font-medium">Eksplorasi koleksi aplikasi dan sistem intelijen data yang kami bangun dengan standar performa 4K.</p>
+    </header>
+
+    <main class="pb-20 px-6 max-w-7xl mx-auto w-full flex-grow">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="product-card glass rounded-[2.5rem] p-8 relative overflow-hidden group transition-all hover:scale-[1.02]">
+                <div class="glow-effect absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+                        <span class="material-symbols-outlined text-3xl text-primary">analytics</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">OSINT Dashboard v1.0</h3>
+                    <p class="text-sm opacity-60 mb-6 leading-relaxed">Platform intelijen sumber terbuka untuk pengumpulan data otomatis dengan enkripsi tingkat tinggi.</p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold uppercase tracking-wider">Android AIDE</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold uppercase tracking-wider">Python API</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center gap-2 font-bold text-sm text-primary group-hover:gap-4 transition-all">
+                        Pelajari Selengkapnya <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card glass rounded-[2.5rem] p-8 relative overflow-hidden group transition-all hover:scale-[1.02]">
+                <div class="glow-effect absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-secondary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+                        <span class="material-symbols-outlined text-3xl text-secondary">domain</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Properiku App</h3>
+                    <p class="text-sm opacity-60 mb-6 leading-relaxed">Aplikasi listing properti berbasis GitHub Database untuk efisiensi biaya operasional dan kecepatan akses data.</p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold uppercase tracking-wider">Web App</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold uppercase tracking-wider">GitHub DB</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center gap-2 font-bold text-sm text-secondary group-hover:gap-4 transition-all">
+                        Buka Demo <span class="material-symbols-outlined text-sm">open_in_new</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card glass rounded-[2.5rem] p-8 relative overflow-hidden group transition-all hover:scale-[1.02]">
+                <div class="glow-effect absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+                        <span class="material-symbols-outlined text-3xl text-primary">robot_2</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Interaction Bot</h3>
+                    <p class="text-sm opacity-60 mb-6 leading-relaxed">Otomasi interaksi media sosial cerdas dengan fitur account-switching untuk manajemen kampanye masif.</p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold uppercase tracking-wider">Automation</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold uppercase tracking-wider">JS Node</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center gap-2 font-bold text-sm text-primary group-hover:gap-4 transition-all">
+                        Cek Fitur <span class="material-symbols-outlined text-sm">bolt</span>
+                    </a>
+                </div>
+            </div>
+
         </div>
-</main>
+    </main>
+
+    <footer class="py-12 px-6 border-t border-white/10 glass rounded-t-[3rem]">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <div class="text-xl font-black mb-2 flex items-center justify-center md:justify-start gap-2">
+                    <span class="material-symbols-outlined text-primary">bolt</span> FireHorse.id
+                </div>
+                <p class="opacity-50 text-xs font-medium tracking-wide">© 2026 FireHorse.id Digital Solutions. Dibuat dengan presisi.</p>
+            </div>
+            <nav class="flex gap-8 text-xs font-bold uppercase tracking-widest opacity-60">
+                <a href="privacy.html" class="hover:text-primary transition-colors">Privacy</a>
+                <a href="privacy.html#terms" class="hover:text-primary transition-colors">Terms</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</body>
+</html>
