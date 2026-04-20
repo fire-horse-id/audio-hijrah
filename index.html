@@ -1,133 +1,165 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevPRO MAX</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevUI 2026 PRO MAX</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    body { font-family: Inter, sans-serif; }
+<style>
+body {
+  font-family: Inter, sans-serif;
+  background: radial-gradient(circle at 20% 20%, #0ea5e920, transparent),
+              radial-gradient(circle at 80% 80%, #9333ea20, transparent),
+              #020617;
+}
 
-    .glass {
-      backdrop-filter: blur(20px);
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-  </style>
+/* glass */
+.glass {
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* page layer */
+.page {
+  position: absolute;
+  inset: 0;
+  padding: 20px;
+  overflow-y: auto;
+  transition: all 0.4s ease;
+}
+
+.page-hidden {
+  opacity: 0;
+  transform: translateX(40px);
+  pointer-events: none;
+}
+
+.page-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* hover */
+.card:hover {
+  transform: translateY(-5px);
+  transition: .3s;
+}
+</style>
 </head>
 
-<body class="bg-[#020617] text-white">
+<body class="text-white">
 
-<div class="flex md:flex-row flex-col min-h-screen">
+<div class="flex min-h-screen">
 
-  <!-- SIDEBAR (DESKTOP) -->
-  <aside class="hidden md:flex flex-col w-64 p-4 border-r border-white/10 glass">
-    <h1 class="text-xl font-bold mb-6">DevPRO</h1>
+  <!-- SIDEBAR -->
+  <aside class="hidden md:flex flex-col w-64 p-5 glass">
+    <h1 class="text-xl font-bold mb-8">DevUI</h1>
 
-    <nav class="flex flex-col gap-3 text-sm">
-      <button onclick="showPage('home')" class="nav-btn">🏠 Home</button>
-      <button onclick="showPage('produk')" class="nav-btn">📦 Produk</button>
-      <button onclick="showPage('dashboard')" class="nav-btn">📊 Dashboard</button>
-      <button onclick="showPage('legal')" class="nav-btn">📜 Legal</button>
-      <button onclick="showPage('contact')" class="nav-btn">☎ Contact</button>
+    <nav class="space-y-2">
+      <button onclick="go('home')" class="nav">Home</button>
+      <button onclick="go('produk')" class="nav">Produk</button>
+      <button onclick="go('dashboard')" class="nav">Dashboard</button>
+      <button onclick="go('legal')" class="nav">Legal</button>
+      <button onclick="go('contact')" class="nav">Contact</button>
     </nav>
-
-    <button onclick="toggleTheme()" class="mt-auto bg-white/10 p-2 rounded-lg">🌙 Mode</button>
   </aside>
 
-  <!-- MAIN -->
-  <main class="flex-1 p-4 md:p-8 space-y-6">
+  <!-- APP VIEW -->
+  <div class="flex-1 relative overflow-hidden">
 
     <!-- HOME -->
-    <section id="home" class="page space-y-6">
+    <div id="home" class="page page-active space-y-6">
       <div class="glass p-6 rounded-2xl">
-        <h2 class="text-3xl font-bold">Developer Modern 🚀</h2>
-        <p class="text-gray-400">Build scalable apps & premium UI</p>
+        <h2 class="text-3xl font-bold">Home</h2>
+        <p class="text-gray-400">Welcome to modern developer UI</p>
       </div>
-
-      <div class="grid grid-cols-3 gap-4">
-        <div class="glass p-4 rounded-xl text-center">25+<br><span class="text-sm text-gray-400">Project</span></div>
-        <div class="glass p-4 rounded-xl text-center">50+<br><span class="text-sm text-gray-400">Client</span></div>
-        <div class="glass p-4 rounded-xl text-center">5y<br><span class="text-sm text-gray-400">Exp</span></div>
-      </div>
-    </section>
+    </div>
 
     <!-- PRODUK -->
-    <section id="produk" class="page hidden">
-      <h2 class="text-2xl mb-4">Produk</h2>
+    <div id="produk" class="page page-hidden space-y-6">
+      <h2 class="text-2xl">Produk</h2>
 
       <div class="grid md:grid-cols-3 gap-4">
-        <div class="glass p-4 rounded-xl">
-          <h3 class="font-bold">Web App</h3>
-          <p class="text-sm text-gray-400">Dashboard modern</p>
+        <div class="glass p-5 rounded-xl card">
+          <h3 class="font-bold">SaaS App</h3>
+          <p class="text-gray-400 text-sm">Dashboard modern</p>
         </div>
-        <div class="glass p-4 rounded-xl">
+        <div class="glass p-5 rounded-xl card">
           <h3 class="font-bold">Mobile App</h3>
-          <p class="text-sm text-gray-400">Android/iOS</p>
+          <p class="text-gray-400 text-sm">Android/iOS</p>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- DASHBOARD -->
-    <section id="dashboard" class="page hidden">
-      <h2 class="text-2xl mb-4">Dashboard</h2>
+    <div id="dashboard" class="page page-hidden space-y-6">
+      <h2 class="text-2xl">Dashboard</h2>
+
       <div class="glass p-6 rounded-xl">
-        Analytics & data user (siap integrasi backend)
+        <p class="text-gray-400">Analytics (siap backend)</p>
       </div>
-    </section>
+    </div>
 
     <!-- LEGAL -->
-    <section id="legal" class="page hidden space-y-4">
-      <div class="glass p-5 rounded-xl">
-        <h3 class="font-bold">Privacy Policy</h3>
-        <p class="text-sm text-gray-400">Kami menjaga data pengguna...</p>
+    <div id="legal" class="page page-hidden space-y-6">
+
+      <div class="glass p-6 rounded-xl">
+        <h3 class="text-xl font-bold mb-2">Privacy Policy</h3>
+        <p class="text-gray-400 text-sm">
+          Kami menjaga keamanan data pengguna dengan standar modern encryption,
+          tidak menyalahgunakan data, dan menjaga privasi sepenuhnya.
+        </p>
       </div>
 
-      <div class="glass p-5 rounded-xl">
-        <h3 class="font-bold">Terms & Conditions</h3>
-        <p class="text-sm text-gray-400">Dengan menggunakan layanan ini...</p>
+      <div class="glass p-6 rounded-xl">
+        <h3 class="text-xl font-bold mb-2">Terms & Conditions</h3>
+        <p class="text-gray-400 text-sm">
+          Pengguna wajib menggunakan layanan secara legal dan tidak melanggar hukum.
+        </p>
       </div>
-    </section>
+
+    </div>
 
     <!-- CONTACT -->
-    <section id="contact" class="page hidden">
-      <h2 class="text-2xl mb-4">Contact</h2>
+    <div id="contact" class="page page-hidden space-y-6">
+      <h2 class="text-2xl">Contact</h2>
 
       <form class="space-y-3 max-w-md">
-        <input class="w-full p-3 bg-white/10 rounded-lg" placeholder="Nama">
-        <input class="w-full p-3 bg-white/10 rounded-lg" placeholder="Email">
-        <textarea class="w-full p-3 bg-white/10 rounded-lg" placeholder="Pesan"></textarea>
+        <input class="w-full p-3 bg-white/10 rounded-xl" placeholder="Nama">
+        <input class="w-full p-3 bg-white/10 rounded-xl" placeholder="Email">
+        <textarea class="w-full p-3 bg-white/10 rounded-xl" placeholder="Pesan"></textarea>
 
         <button class="w-full py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl">
           Kirim
         </button>
       </form>
-    </section>
+    </div>
 
-  </main>
-
-  <!-- BOTTOM NAV (MOBILE) -->
-  <nav class="md:hidden fixed bottom-0 left-0 right-0 grid grid-cols-5 bg-black/80 backdrop-blur-lg border-t border-white/10">
-    <button onclick="showPage('home')" class="p-3 text-xs">🏠</button>
-    <button onclick="showPage('produk')" class="p-3 text-xs">📦</button>
-    <button onclick="showPage('dashboard')" class="p-3 text-xs">📊</button>
-    <button onclick="showPage('legal')" class="p-3 text-xs">📜</button>
-    <button onclick="showPage('contact')" class="p-3 text-xs">☎</button>
-  </nav>
+  </div>
 
 </div>
 
-<script>
-function showPage(id) {
-  document.querySelectorAll(".page").forEach(p => p.classList.add("hidden"));
-  document.getElementById(id).classList.remove("hidden");
-}
+<!-- MOBILE NAV -->
+<div class="md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 flex gap-3 px-5 py-3 rounded-full glass">
+  <button onclick="go('home')">🏠</button>
+  <button onclick="go('produk')">📦</button>
+  <button onclick="go('dashboard')">📊</button>
+  <button onclick="go('contact')">☎</button>
+</div>
 
-function toggleTheme() {
-  document.body.classList.toggle("bg-white");
-  document.body.classList.toggle("text-black");
+<script>
+function go(id) {
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('page-active');
+    p.classList.add('page-hidden');
+  });
+
+  const el = document.getElementById(id);
+  el.classList.remove('page-hidden');
+  el.classList.add('page-active');
 }
 </script>
 
