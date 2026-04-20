@@ -1,182 +1,257 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DevUI PRO 2026</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
-
-<!-- ICON LIBRARY -->
-<script src="https://unpkg.com/lucide@latest"></script>
-
-<style>
-body {
-  font-family: Inter, sans-serif;
-  background: radial-gradient(circle at 20% 20%, #0ea5e920, transparent),
-              radial-gradient(circle at 80% 80%, #9333ea20, transparent),
-              #020617;
-}
-
-.glass {
-  backdrop-filter: blur(20px);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.page {
-  position: absolute;
-  inset: 0;
-  padding: 20px;
-  overflow-y: auto;
-  transition: all .4s ease;
-}
-
-.page-hidden {
-  opacity: 0;
-  transform: translateX(40px);
-  pointer-events: none;
-}
-
-.page-active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.nav-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  transition: .2s;
-}
-
-.nav-btn:hover {
-  background: rgba(255,255,255,0.08);
-}
-
-.icon {
-  width: 18px;
-  height: 18px;
-}
-</style>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aether Architect - Portfolio</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#d3dbdf",
+                    "error-container": "#f76a80",
+                    "secondary-dim": "#005e54",
+                    "inverse-primary": "#8083ff",
+                    "primary-dim": "#3d3dcb",
+                    "on-tertiary-fixed": "#46002c",
+                    "on-surface-variant": "#596063",
+                    "error": "#ac3149",
+                    "on-secondary-container": "#005e54",
+                    "on-primary-fixed": "#0c0090",
+                    "surface-variant": "#dde3e7",
+                    "surface-bright": "#f7f9fb",
+                    "surface-container-highest": "#dde3e7",
+                    "on-secondary-fixed-variant": "#00695e",
+                    "primary-container": "#babbff",
+                    "on-error-container": "#68001f",
+                    "tertiary-container": "#ff99ca",
+                    "outline": "#757c7f",
+                    "on-tertiary-fixed-variant": "#7b0852",
+                    "secondary-fixed-dim": "#54eed8",
+                    "surface-tint": "#4a4bd7",
+                    "surface-container-high": "#e3e9ec",
+                    "tertiary-dim": "#952467",
+                    "on-error": "#fff7f7",
+                    "primary": "#4a4bd7",
+                    "outline-variant": "#acb3b7",
+                    "background": "#f7f9fb",
+                    "on-tertiary-container": "#6e0048",
+                    "tertiary-fixed-dim": "#ff81c1",
+                    "error-dim": "#770326",
+                    "surface": "#f7f9fb",
+                    "secondary-fixed": "#65fde6",
+                    "on-tertiary": "#fff7f8",
+                    "on-background": "#2d3337",
+                    "secondary": "#006b60",
+                    "primary-fixed": "#babbff",
+                    "on-secondary-fixed": "#004a41",
+                    "surface-container-low": "#f1f4f6",
+                    "on-primary-fixed-variant": "#2d2cbd",
+                    "inverse-surface": "#0b0f10",
+                    "on-secondary": "#e2fff8",
+                    "on-surface": "#2d3337",
+                    "inverse-on-surface": "#9a9d9f",
+                    "surface-container": "#eaeef1",
+                    "on-primary-container": "#221eb5",
+                    "secondary-container": "#65fde6",
+                    "primary-fixed-dim": "#aaacff",
+                    "tertiary-fixed": "#ff99ca",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#fbf7ff",
+                    "tertiary": "#a53173"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {},
+            "fontFamily": {
+                    "headline": [
+                            "Manrope"
+                    ],
+                    "body": [
+                            "Manrope"
+                    ],
+                    "label": [
+                            "Manrope"
+                    ]
+            }
+    },
+        },
+      }
+    </script>
 </head>
-
-<body class="text-white">
-
-<div class="flex min-h-screen">
-
-  <!-- SIDEBAR -->
-  <aside class="hidden md:flex flex-col w-64 p-5 glass">
-    <h1 class="text-xl font-bold mb-8">DevUI</h1>
-
-    <nav class="space-y-2 text-sm">
-      <button onclick="go('home')" class="nav-btn"><i data-lucide="home" class="icon"></i>Home</button>
-      <button onclick="go('produk')" class="nav-btn"><i data-lucide="box" class="icon"></i>Produk</button>
-      <button onclick="go('dashboard')" class="nav-btn"><i data-lucide="bar-chart-3" class="icon"></i>Dashboard</button>
-      <button onclick="go('legal')" class="nav-btn"><i data-lucide="file-text" class="icon"></i>Legal</button>
-      <button onclick="go('contact')" class="nav-btn"><i data-lucide="mail" class="icon"></i>Contact</button>
-    </nav>
-  </aside>
-
-  <!-- APP -->
-  <div class="flex-1 relative overflow-hidden">
-
-    <!-- HOME -->
-    <div id="home" class="page page-active space-y-6">
-      <div class="glass p-6 rounded-2xl">
-        <h2 class="text-3xl font-bold">Welcome 🚀</h2>
-        <p class="text-gray-400">Modern developer interface</p>
-      </div>
-
-      <!-- SOCIAL -->
-      <div class="flex gap-4">
-        <a href="#" class="glass p-3 rounded-xl hover:bg-white/10">
-          <i data-lucide="github"></i>
-        </a>
-        <a href="#" class="glass p-3 rounded-xl hover:bg-white/10">
-          <i data-lucide="linkedin"></i>
-        </a>
-        <a href="#" class="glass p-3 rounded-xl hover:bg-white/10">
-          <i data-lucide="twitter"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- PRODUK -->
-    <div id="produk" class="page page-hidden">
-      <h2 class="text-2xl mb-4">Produk</h2>
-
-      <div class="grid md:grid-cols-3 gap-4">
-        <div class="glass p-5 rounded-xl">
-          <h3 class="font-bold flex items-center gap-2">
-            <i data-lucide="layout-dashboard"></i> SaaS Dashboard
-          </h3>
-        </div>
-      </div>
-    </div>
-
-    <!-- DASHBOARD -->
-    <div id="dashboard" class="page page-hidden">
-      <h2 class="text-2xl mb-4">Dashboard</h2>
-      <div class="glass p-6 rounded-xl flex items-center gap-2">
-        <i data-lucide="activity"></i>
-        <span>Analytics data</span>
-      </div>
-    </div>
-
-    <!-- LEGAL -->
-    <div id="legal" class="page page-hidden space-y-4">
-      <div class="glass p-6 rounded-xl">
-        <h3 class="flex items-center gap-2 font-bold">
-          <i data-lucide="shield"></i> Privacy Policy
-        </h3>
-        <p class="text-gray-400 text-sm">Data aman & terenkripsi.</p>
-      </div>
-    </div>
-
-    <!-- CONTACT -->
-    <div id="contact" class="page page-hidden space-y-4">
-      <h2 class="text-2xl">Contact</h2>
-
-      <form class="space-y-3 max-w-md">
-        <input class="w-full p-3 bg-white/10 rounded-xl" placeholder="Nama">
-        <input class="w-full p-3 bg-white/10 rounded-xl" placeholder="Email">
-        <textarea class="w-full p-3 bg-white/10 rounded-xl" placeholder="Pesan"></textarea>
-
-        <button class="w-full py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl flex items-center justify-center gap-2">
-          <i data-lucide="send"></i> Kirim
-        </button>
-      </form>
-    </div>
-
-  </div>
-
+<body class="bg-background text-on-surface font-body antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col overflow-x-hidden">
+<!-- Ambient Background Gradients (Aurora) -->
+<div class="fixed inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center opacity-40">
+<div class="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-primary/20 rounded-full mix-blend-multiply filter blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-secondary/15 rounded-full mix-blend-multiply filter blur-[100px]"></div>
+<div class="absolute top-[20%] right-[10%] w-[40vw] h-[40vw] bg-tertiary-container/30 rounded-full mix-blend-multiply filter blur-[100px]"></div>
 </div>
-
-<!-- MOBILE NAV -->
-<div class="md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 flex gap-4 px-6 py-3 rounded-full glass">
-  <button onclick="go('home')"><i data-lucide="home"></i></button>
-  <button onclick="go('produk')"><i data-lucide="box"></i></button>
-  <button onclick="go('dashboard')"><i data-lucide="bar-chart-3"></i></button>
-  <button onclick="go('contact')"><i data-lucide="mail"></i></button>
+<!-- TopNavBar Component -->
+<header class="fixed top-0 w-full z-50 bg-[#f7f9fb]/70 backdrop-blur-xl bg-gradient-to-b from-[#f7f9fb] to-transparent shadow-[0_8px_32px_rgba(45,51,55,0.04)] font-['Manrope'] font-medium text-sm tracking-tight">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-6">
+<div class="text-xl font-bold tracking-tighter text-[#2d3337] flex items-center gap-2">
+<span class="material-symbols-outlined text-[#4a4bd7]" style="font-variation-settings: 'FILL' 1;">architecture</span>
+                Aether Architect
+            </div>
+<nav class="hidden md:flex items-center space-x-10">
+<a class="text-[#2d3337]/60 hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo hover:scale-95" href="#">Projects</a>
+<a class="text-[#2d3337]/60 hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo hover:scale-95" href="#">Writing</a>
+<a class="text-[#2d3337]/60 hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo hover:scale-95" href="#">Experience</a>
+<a class="text-[#2d3337]/60 hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo hover:scale-95" href="#">About</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="text-[#2d3337]/60 hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo hover:scale-95 flex items-center justify-center">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button class="hidden md:flex items-center justify-center px-6 py-2.5 rounded-full bg-gradient-to-br from-[#4a4bd7] to-[#3d3dcb] text-white font-semibold shadow-[0_4px_14px_0_rgba(74,75,215,0.39)] hover:shadow-[0_6px_20px_rgba(74,75,215,0.23)] hover:-translate-y-0.5 transition-all duration-300 ease-out-expo">
+                    Hire Me
+                </button>
 </div>
-
-<script>
-lucide.createIcons();
-
-function go(id) {
-  document.querySelectorAll('.page').forEach(p => {
-    p.classList.add('page-hidden');
-    p.classList.remove('page-active');
-  });
-
-  const el = document.getElementById(id);
-  el.classList.remove('page-hidden');
-  el.classList.add('page-active');
-}
-</script>
-
-</body>
-</html>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow relative z-10 pt-40 pb-24">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center min-h-[614px]">
+<div class="lg:col-span-7 flex flex-col items-start z-20">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-container-lowest text-primary font-label text-sm font-semibold mb-8 shadow-[0_4px_24px_rgba(45,51,55,0.04)]">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+                    Available for Q4 Opportunities
+                </div>
+<h1 class="text-[4rem] lg:text-[5rem] leading-[1.05] font-headline font-extrabold text-on-surface tracking-[-0.03em] mb-8">
+                    Architecting the <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-inverse-primary to-secondary">Ethereal.</span>
+</h1>
+<p class="text-lg lg:text-xl text-on-surface-variant font-body leading-relaxed max-w-2xl mb-12">
+                    Specializing in high-performance structural systems and fluid interface design. Transforming complex infrastructure into seamless, hyper-responsive digital experiences.
+                </p>
+<div class="flex flex-col sm:flex-row items-center gap-6">
+<button class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-br from-primary to-primary-dim text-on-primary font-label font-bold tracking-wide shadow-[0_8px_32px_rgba(74,75,215,0.25)] hover:shadow-[0_12px_40px_rgba(74,75,215,0.35)] hover:-translate-y-1 transition-all duration-300">
+                        Explore Architecture
+                    </button>
+<button class="w-full sm:w-auto px-8 py-4 rounded-full bg-surface-container-lowest text-primary font-label font-bold tracking-wide shadow-[0_4px_20px_rgba(45,51,55,0.03)] hover:bg-surface-container-low transition-all duration-300 flex items-center gap-2">
+                        View Repository
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Hero Visual (Asymmetric Float) -->
+<div class="lg:col-span-5 relative h-[500px] w-full hidden lg:block perspective-1000">
+<div class="absolute inset-0 bg-gradient-to-tr from-surface-container-lowest to-surface-container-low rounded-3xl transform rotate-3 scale-105 shadow-[0_32px_64px_rgba(45,51,55,0.06)]"></div>
+<img alt="Abstract architecture visual" class="absolute inset-0 w-full h-full object-cover rounded-3xl transform -rotate-2 hover:rotate-0 transition-transform duration-700 ease-out-expo shadow-[0_16px_40px_rgba(45,51,55,0.08)]" data-alt="Abstract 3D architectural render of flowing, translucent layered glass structures interacting with soft natural lighting and subtle blue holographic data points" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMavQTjp1y068V3ZaXw02JOPFJ6wqJAWLZpKyrtB6EgnKad7969z2OoPSJHV_E7_x0QgW8tpWRteex-DHaFiwPf6ufYsJ0uoZz8z9vUM9aPgKlrbNkh9FuOUPhMXLWIod1B4fJ2WVhO1yWxqkv135Pw23In3_Xei3_zjjChYqSxpid5z4B1xUdGkABVISIEys29FWoUFxHybfYpkp84vPxGg0XS3o_VMloJ9ZbxP4RY0nD6y0bkeYppzvLLga9KjthqsRfR8aTUHX6"/>
+</div>
+</section>
+<!-- Bento Grid Section -->
+<section class="max-w-7xl mx-auto px-8 w-full mt-32">
+<div class="flex items-end justify-between mb-12">
+<div>
+<h2 class="text-3xl font-headline font-extrabold text-on-surface tracking-tight mb-2">System Metrics</h2>
+<p class="text-on-surface-variant font-body">Quantifiable performance and architectural highlights.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[300px]">
+<!-- Stat Card: Uptime (Span 4) -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden shadow-[0_8px_32px_rgba(45,51,55,0.03)] group transition-all duration-500 hover:shadow-[0_16px_48px_rgba(45,51,55,0.06)]">
+<div class="absolute top-0 right-0 p-8 text-primary opacity-20 group-hover:opacity-100 transition-opacity duration-500">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">dns</span>
+</div>
+<div>
+<div class="w-12 h-12 rounded-2xl bg-surface-container-low flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined">speed</span>
+</div>
+<h3 class="text-on-surface-variant font-label font-semibold mb-1">Core Availability</h3>
+</div>
+<div>
+<div class="text-[3rem] font-headline font-extrabold text-on-surface tracking-tighter leading-none mb-2">99.99<span class="text-primary">%</span></div>
+<p class="text-sm text-on-surface-variant">Global infrastructure uptime over 4 years.</p>
+</div>
+</div>
+<!-- Visual Card: Data Viz (Span 8) -->
+<div class="md:col-span-8 bg-surface-container-low rounded-3xl relative overflow-hidden shadow-[0_8px_32px_rgba(45,51,55,0.03)] group">
+<img alt="Data visualization preview" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-multiply transition-transform duration-700 group-hover:scale-105" data-alt="High-end crisp data visualization dashboard interface floating in a clean white environment with vibrant blue and teal graphical curves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX5k4QElxUqfoGgtrZ989mgL3diugsf5ALLL3tM7WC9F0gpulfos8tU9Lnwwxt0euFEEKxvH5ROIT_OvQlGQyf5ngV9OjiuxEOeKa5J9YEFHuXAWw4Z2B3lVhd8JRc14OohIFv8KBy7QX6xqtE6prPoT8h-ttgleVi3SgtDl--ctECuiewKCHDsybfgOz31KYFRUed0CWSb2vGxXKObFC5x1gDhXWf-fu-UtDmeJceHA7ExpuVliXkdVCN8ouNdYO05UHc89Vtx02L"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full flex justify-between items-end">
+<div>
+<h3 class="text-2xl font-headline font-bold text-on-surface mb-2">Telemetry UI Toolkit</h3>
+<p class="text-on-surface-variant font-body max-w-md">Open-source library for rendering millions of data points at 60fps.</p>
+</div>
+<button class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg hover:bg-primary-dim transition-colors">
+<span class="material-symbols-outlined">arrow_outward</span>
+</button>
+</div>
+</div>
+<!-- Feature Card: Architecture (Span 7) -->
+<div class="md:col-span-7 bg-surface-container-lowest rounded-3xl p-8 relative overflow-hidden shadow-[0_8px_32px_rgba(45,51,55,0.03)] flex flex-col justify-center gap-8">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">account_tree</span>
+</div>
+<div>
+<h3 class="text-xl font-headline font-bold text-on-surface">Microservices Blueprint</h3>
+<p class="text-sm text-on-surface-variant">Distributed systems mapping.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 w-full">
+<div class="h-12 w-full bg-surface-container-low rounded-xl relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full w-[85%] bg-gradient-to-r from-primary to-inverse-primary rounded-xl"></div>
+<div class="absolute inset-0 flex items-center px-4 text-xs font-label font-bold text-white tracking-wider mix-blend-overlay">NODE COVERAGE</div>
+</div>
+<div class="h-12 w-full bg-surface-container-low rounded-xl relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full w-[62%] bg-gradient-to-r from-secondary to-secondary-fixed rounded-xl"></div>
+<div class="absolute inset-0 flex items-center px-4 text-xs font-label font-bold text-white tracking-wider mix-blend-overlay">API EFFICIENCY</div>
+</div>
+</div>
+</div>
+<!-- Stat Card: Commits (Span 5) -->
+<div class="md:col-span-5 bg-gradient-to-br from-primary via-[#5d5ef0] to-inverse-primary rounded-3xl p-8 relative overflow-hidden shadow-[0_16px_40px_rgba(74,75,215,0.15)] flex flex-col justify-between text-on-primary">
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-[40px] -mr-20 -mt-20"></div>
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 text-white font-label text-xs font-bold uppercase tracking-widest backdrop-blur-md mb-6">
+                            Annual Activity
+                        </div>
+</div>
+<div>
+<div class="text-[4rem] font-headline font-extrabold tracking-tighter leading-none mb-2">14.2<span class="text-2xl font-medium">k</span></div>
+<p class="text-white/80 font-body text-lg font-medium">Verified Contributions</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="w-full rounded-t-[2rem] bg-[#f1f4f6] mt-24 relative z-20 overflow-hidden font-['Manrope']">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 max-w-7xl mx-auto gap-8 text-[#2d3337]">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="text-lg font-black text-[#2d3337] flex items-center gap-2">
+<span class="material-symbols-outlined text-[#4a4bd7]" style="font-variation-settings: 'FILL' 1;">architecture</span>
+                    Aether Architect
+                </div>
+<p class="text-sm leading-relaxed text-[#2d3337]/50">
+                    © 2024 Aether Architect. Precision in every pixel.
+                </p>
+</div>
+<nav class="flex flex-wrap justify-center gap-8">
+<a class="text-[#2d3337]/50 hover:text-[#4a4bd7] font-semibold hover:-translate-y-0.5 transition-all duration-300" href="#">GitHub</a>
+<a class="text-[#2d3337]/50 hover:text-[#4a4bd7] font-semibold hover:-translate-y-0.5 transition-all duration-300" href="#">LinkedIn</a>
+<a class="text-[#2d3337]/50 hover:text-[#4a4bd7] font-semibold hover:-translate-y-0.5 transition-all duration-300" href="#">Twitter</a>
+<a class="text-[#2d3337]/50 hover:text-[#4a4bd7] font-semibold hover:-translate-y-0.5 transition-all duration-300" href="#">Email</a>
+</nav>
+</div>
+</footer>
+</body></html>
