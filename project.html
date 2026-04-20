@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Projects - Aether Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d3dbdf",
+                        "error-container": "#f76a80",
+                        "secondary-dim": "#005e54",
+                        "inverse-primary": "#8083ff",
+                        "primary-dim": "#3d3dcb",
+                        "on-tertiary-fixed": "#46002c",
+                        "on-surface-variant": "#596063",
+                        "error": "#ac3149",
+                        "on-secondary-container": "#005e54",
+                        "on-primary-fixed": "#0c0090",
+                        "surface-variant": "#dde3e7",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-highest": "#dde3e7",
+                        "on-secondary-fixed-variant": "#00695e",
+                        "primary-container": "#babbff",
+                        "on-error-container": "#68001f",
+                        "tertiary-container": "#ff99ca",
+                        "outline": "#757c7f",
+                        "on-tertiary-fixed-variant": "#7b0852",
+                        "secondary-fixed-dim": "#54eed8",
+                        "surface-tint": "#4a4bd7",
+                        "surface-container-high": "#e3e9ec",
+                        "tertiary-dim": "#952467",
+                        "on-error": "#fff7f7",
+                        "primary": "#4a4bd7",
+                        "outline-variant": "#acb3b7",
+                        "background": "#f7f9fb",
+                        "on-tertiary-container": "#6e0048",
+                        "tertiary-fixed-dim": "#ff81c1",
+                        "error-dim": "#770326",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed": "#65fde6",
+                        "on-tertiary": "#fff7f8",
+                        "on-background": "#2d3337",
+                        "secondary": "#006b60",
+                        "primary-fixed": "#babbff",
+                        "on-secondary-fixed": "#004a41",
+                        "surface-container-low": "#f1f4f6",
+                        "on-primary-fixed-variant": "#2d2cbd",
+                        "inverse-surface": "#0b0f10",
+                        "on-secondary": "#e2fff8",
+                        "on-surface": "#2d3337",
+                        "inverse-on-surface": "#9a9d9f",
+                        "surface-container": "#eaeef1",
+                        "on-primary-container": "#221eb5",
+                        "secondary-container": "#65fde6",
+                        "primary-fixed-dim": "#aaacff",
+                        "tertiary-fixed": "#ff99ca",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#fbf7ff",
+                        "tertiary": "#a53173"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col antialiased">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 bg-[#f7f9fb]/70 dark:bg-[#2d3337]/70 backdrop-blur-xl no-border bg-gradient-to-b from-[#f7f9fb] to-transparent shadow-[0_8px_32px_rgba(45,51,55,0.04)] hidden md:block">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-6">
+<div class="text-xl font-bold tracking-tighter text-[#2d3337] dark:text-[#f7f9fb]">Aether Architect</div>
+<nav class="flex gap-8 font-['Manrope'] font-medium text-sm tracking-tight">
+<a class="text-[#4a4bd7] dark:text-[#6366f1] font-bold border-b-2 border-[#4a4bd7] pb-1 hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo" href="#">Projects</a>
+<a class="text-[#2d3337]/60 dark:text-[#f7f9fb]/60 hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo" href="#">Writing</a>
+<a class="text-[#2d3337]/60 dark:text-[#f7f9fb]/60 hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo" href="#">Experience</a>
+<a class="text-[#2d3337]/60 dark:text-[#f7f9fb]/60 hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo" href="#">About</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-[#2d3337]/60 hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</button>
+<button class="bg-gradient-to-br from-primary to-primary-dim text-on-primary px-6 py-2 rounded-full font-medium text-sm hover:opacity-90 transition-opacity">Hire Me</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-32 pb-24 px-8 max-w-7xl mx-auto w-full">
+<!-- Header Section -->
+<section class="mb-16 relative">
+<!-- Aurora Blur Background -->
+<div class="absolute -top-32 -left-32 w-[600px] h-[600px] bg-gradient-to-tr from-primary/10 via-secondary-fixed/20 to-tertiary-fixed/10 blur-[120px] rounded-full z-0 opacity-70 pointer-events-none"></div>
+<div class="relative z-10 max-w-3xl">
+<h1 class="text-display-lg leading-tight tracking-tight font-extrabold text-on-surface mb-6">Selected Works &amp; Digital Ecosystems</h1>
+<p class="text-body-lg text-on-surface-variant leading-relaxed mb-10">A curated collection of high-fidelity applications, developer tools, and architectural systems. Exploring the intersection of structural precision and fluid user experience.</p>
+<!-- Filter Pills -->
+<div class="flex flex-wrap gap-4">
+<button class="px-5 py-2.5 bg-primary text-on-primary rounded-full text-sm font-medium shadow-[0_4px_20px_rgba(74,75,215,0.2)]">All Projects</button>
+<button class="px-5 py-2.5 bg-surface-container-lowest text-on-surface rounded-full text-sm font-medium hover:bg-surface-container-low transition-colors shadow-[0_4px_20px_rgba(45,51,55,0.04)]">Web Apps</button>
+<button class="px-5 py-2.5 bg-surface-container-lowest text-on-surface rounded-full text-sm font-medium hover:bg-surface-container-low transition-colors shadow-[0_4px_20px_rgba(45,51,55,0.04)]">Mobile</button>
+<button class="px-5 py-2.5 bg-surface-container-lowest text-on-surface rounded-full text-sm font-medium hover:bg-surface-container-low transition-colors shadow-[0_4px_20px_rgba(45,51,55,0.04)]">Cloud Tools</button>
+<button class="px-5 py-2.5 bg-surface-container-lowest text-on-surface rounded-full text-sm font-medium hover:bg-surface-container-low transition-colors shadow-[0_4px_20px_rgba(45,51,55,0.04)]">Open Source</button>
+</div>
+</div>
+</section>
+<!-- Projects Grid (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Featured Project (Spans 8 cols) -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-[2rem] p-8 flex flex-col justify-between shadow-[0_8px_40px_rgba(45,51,55,0.04)] relative overflow-hidden group min-h-[480px]">
+<!-- Subtle Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent z-0"></div>
+<div class="relative z-10 flex justify-between items-start mb-8">
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface text-on-surface-variant text-xs font-semibold tracking-wider uppercase rounded-full">Web App</span>
+<span class="px-3 py-1 bg-surface text-on-surface-variant text-xs font-semibold tracking-wider uppercase rounded-full">React</span>
+</div>
+<a class="w-10 h-10 bg-surface rounded-full flex items-center justify-center text-on-surface hover:text-primary transition-colors shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="open_in_new">open_in_new</span>
+</a>
+</div>
+<div class="relative z-10 mt-auto">
+<h3 class="text-headline-lg font-bold text-on-surface mb-3">Nexus Analytics Platform</h3>
+<p class="text-body-lg text-on-surface-variant mb-6 max-w-xl">A comprehensive data visualization dashboard designed for enterprise scale. Features real-time streaming data, custom widget creation, and predictive modeling interfaces.</p>
+<div class="w-full h-64 bg-surface-container-low rounded-xl overflow-hidden relative">
+<img alt="Data analytics dashboard" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Abstract minimal data visualization interface with glowing blue and teal charts on a soft light grey background, high resolution 4k" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADRM-GorGIH1b5q92yStbrp9ADZWDIEaDm3RwYZMkX0ozGJ1GHJ_XG8Rhqqhm3vWsIeLhLzXIOH4Y0TNjJYp1jYUDBPl1aI_IU2D16vvYFbLon4PHVHcHQ4bBXqFesSVRxWNbb4bfTGC4f-zhe6lrqQ8Qcs0_Hh3Z00OvVD5x_G2pydzxMpPW8E9tGp5CLVgvSuWJpv0PElVtaQSLpAku2ujaIypGR-yCNDwx8GSqGUF-1S8jtnPiCt_XLbpaaPTzlJ3uSG2oym17k"/>
+</div>
+</div>
+</div>
+<!-- Standard Project (Spans 4 cols) -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-[2rem] p-8 flex flex-col shadow-[0_8px_40px_rgba(45,51,55,0.04)] group min-h-[480px]">
+<div class="flex justify-between items-start mb-6">
+<div class="flex gap-2 flex-wrap">
+<span class="px-3 py-1 bg-surface-container-low text-on-surface-variant text-xs font-semibold tracking-wider uppercase rounded-full">Mobile</span>
+</div>
+<a class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="arrow_outward">arrow_outward</span>
+</a>
+</div>
+<h3 class="text-title-md font-bold text-on-surface mb-2">Aura Meditation</h3>
+<p class="text-body-md text-on-surface-variant mb-6 flex-grow">A wellness application utilizing subtle soundscapes and haptic feedback. Built with React Native for fluid cross-platform performance.</p>
+<div class="w-full h-48 bg-surface-container-low rounded-xl overflow-hidden mt-auto">
+<img alt="Meditation app interface" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Soft pastel gradient background resembling a dawn sky with a minimal clean smartphone mockup displaying a wellness app interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQcN_gXaJVcmUl7Du_2gOGRPhNE3fYTbeCndijNGYvFxYS0CIDxbinhr77As0JrquXFc7oAfcs1LbHKCNqIR-5w1baKDn43UC2q2G6a5a_sqn2T1HQq7EK6Lz2FCMTodu_9WOM6xdZqNNJQ3SHbHyTu9LwtQxVz5gQNKNTV10ppTYipBCphq8GHk_MTACmd9FHyG9rB2lZEU70OYcbfDw_UKP9x3-2Yx_Cny4CZNJDfJYc4lGl3IfCHgGx-iwAUpjj850Tj6scb0Ur"/>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full rounded-t-[2rem] bg-[#f1f4f6] dark:bg-[#1a1c1e] mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 max-w-7xl mx-auto">
+<div class="mb-8 md:mb-0 text-center md:text-left">
+<div class="text-lg font-black text-[#2d3337] dark:text-[#f7f9fb] mb-2">Aether Architect</div>
+<div class="font-['Manrope'] text-[#2d3337] dark:text-[#f7f9fb] text-sm leading-relaxed opacity-70">© 2024 Aether Architect. Precision in every pixel.</div>
+</div>
+<div class="flex gap-8">
+<a class="text-[#2d3337]/50 dark:text-[#f7f9fb]/50 font-['Manrope'] text-sm hover:translate-y-[-2px] hover:text-[#4a4bd7] transition-all" href="#">GitHub</a>
+<a class="text-[#2d3337]/50 dark:text-[#f7f9fb]/50 font-['Manrope'] text-sm hover:translate-y-[-2px] hover:text-[#4a4bd7] transition-all" href="#">LinkedIn</a>
+<a class="text-[#2d3337]/50 dark:text-[#f7f9fb]/50 font-['Manrope'] text-sm hover:translate-y-[-2px] hover:text-[#4a4bd7] transition-all" href="#">Twitter</a>
+<a class="text-[#2d3337]/50 dark:text-[#f7f9fb]/50 font-['Manrope'] text-sm hover:translate-y-[-2px] hover:text-[#4a4bd7] transition-all" href="#">Email</a>
+</div>
+</div>
+</footer>
+</body></html>

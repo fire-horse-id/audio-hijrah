@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Connect with Me - Aether Architect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d3dbdf",
+                        "error-container": "#f76a80",
+                        "secondary-dim": "#005e54",
+                        "inverse-primary": "#8083ff",
+                        "primary-dim": "#3d3dcb",
+                        "on-tertiary-fixed": "#46002c",
+                        "on-surface-variant": "#596063",
+                        "error": "#ac3149",
+                        "on-secondary-container": "#005e54",
+                        "on-primary-fixed": "#0c0090",
+                        "surface-variant": "#dde3e7",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-highest": "#dde3e7",
+                        "on-secondary-fixed-variant": "#00695e",
+                        "primary-container": "#babbff",
+                        "on-error-container": "#68001f",
+                        "tertiary-container": "#ff99ca",
+                        "outline": "#757c7f",
+                        "on-tertiary-fixed-variant": "#7b0852",
+                        "secondary-fixed-dim": "#54eed8",
+                        "surface-tint": "#4a4bd7",
+                        "surface-container-high": "#e3e9ec",
+                        "tertiary-dim": "#952467",
+                        "on-error": "#fff7f7",
+                        "primary": "#4a4bd7",
+                        "outline-variant": "#acb3b7",
+                        "background": "#f7f9fb",
+                        "on-tertiary-container": "#6e0048",
+                        "tertiary-fixed-dim": "#ff81c1",
+                        "error-dim": "#770326",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed": "#65fde6",
+                        "on-tertiary": "#fff7f8",
+                        "on-background": "#2d3337",
+                        "secondary": "#006b60",
+                        "primary-fixed": "#babbff",
+                        "on-secondary-fixed": "#004a41",
+                        "surface-container-low": "#f1f4f6",
+                        "on-primary-fixed-variant": "#2d2cbd",
+                        "inverse-surface": "#0b0f10",
+                        "on-secondary": "#e2fff8",
+                        "on-surface": "#2d3337",
+                        "inverse-on-surface": "#9a9d9f",
+                        "surface-container": "#eaeef1",
+                        "on-primary-container": "#221eb5",
+                        "secondary-container": "#65fde6",
+                        "primary-fixed-dim": "#aaacff",
+                        "tertiary-fixed": "#ff99ca",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#fbf7ff",
+                        "tertiary": "#a53173"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .aurora-bg {
+            background: linear-gradient(135deg, theme('colors.surface') 0%, theme('colors.surface-container-lowest') 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .aurora-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, theme('colors.primary-container') 0%, transparent 60%),
+                        radial-gradient(circle, theme('colors.tertiary-container') 0%, transparent 60%);
+            background-position: 0% 0%, 100% 100%;
+            background-size: 50% 50%, 50% 50%;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            filter: blur(100px);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, theme('colors.primary'), theme('colors.tertiary'));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, theme('colors.primary'), theme('colors.primary-dim'));
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col relative selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#f7f9fb]/70 dark:bg-[#2d3337]/70 backdrop-blur-xl shadow-[0_8px_32px_rgba(45,51,55,0.04)] no-border bg-gradient-to-b from-[#f7f9fb] to-transparent">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-6">
+<div class="text-xl font-bold tracking-tighter text-[#2d3337] dark:text-[#f7f9fb]">Aether Architect</div>
+<div class="hidden md:flex space-x-8">
+<a class="text-[#2d3337]/60 dark:text-[#f7f9fb]/60 hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo font-['Manrope'] font-medium text-sm tracking-tight" href="#">Projects</a>
+<a class="text-[#2d3337]/60 dark:text-[#f7f9fb]/60 hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo font-['Manrope'] font-medium text-sm tracking-tight" href="#">Writing</a>
+<a class="text-[#2d3337]/60 dark:text-[#f7f9fb]/60 hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo font-['Manrope'] font-medium text-sm tracking-tight" href="#">Experience</a>
+<a class="text-[#4a4bd7] dark:text-[#6366f1] font-bold border-b-2 border-[#4a4bd7] pb-1 hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo font-['Manrope'] font-medium text-sm tracking-tight" href="#">About</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="text-[#4a4bd7] dark:text-[#6366f1] font-['Manrope'] font-medium text-sm tracking-tight hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo">Hire Me</button>
+<button class="text-[#2d3337]/60 dark:text-[#f7f9fb]/60 hover:text-[#4a4bd7] transition-all duration-300 ease-out-expo">
+<span class="material-symbols-outlined text-[20px]">dark_mode</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-grow pt-32 pb-24 px-8 aurora-bg">
+<div class="max-w-7xl mx-auto relative z-10">
+<header class="mb-20 text-center md:text-left max-w-3xl">
+<h1 class="font-headline text-display-lg md:text-[4rem] font-extrabold tracking-[-0.02em] leading-[1.1] text-on-surface mb-6">
+                    Let's Build the <br/><span class="gradient-text">Ethereal</span> Together.
+                </h1>
+<p class="font-body text-body-lg md:text-xl text-on-surface-variant leading-[1.6] max-w-2xl">
+                    Professional inquiries, project collaborations, or architectural discussions. I'm available for select high-impact opportunities.
+                </p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+<!-- Contact Form (Bento Large Item) -->
+<div class="lg:col-span-7">
+<div class="bg-surface-container-lowest rounded-[2rem] p-8 md:p-12 shadow-[0_20px_60px_-15px_rgba(45,51,55,0.06)] relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/20 rounded-full blur-3xl -mr-32 -mt-32 transition-transform duration-700 group-hover:scale-110"></div>
+<h2 class="font-headline text-headline-lg font-bold text-on-surface mb-8 relative z-10">Initiate Contact</h2>
+<form class="space-y-8 relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-2">
+<label class="block font-label text-sm font-medium text-on-surface-variant" for="name">Full Name</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 font-body text-on-surface focus:ring-1 focus:ring-outline transition-all duration-300" id="name" placeholder="Jane Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label text-sm font-medium text-on-surface-variant" for="email">Email Address</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 font-body text-on-surface focus:ring-1 focus:ring-outline transition-all duration-300" id="email" placeholder="jane@example.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block font-label text-sm font-medium text-on-surface-variant" for="subject">Subject</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 font-body text-on-surface appearance-none focus:ring-1 focus:ring-outline transition-all duration-300" id="subject">
+<option disabled="" selected="" value="">Select an inquiry type...</option>
+<option value="project">Project Collaboration</option>
+<option value="consulting">Design Consulting</option>
+<option value="speaking">Speaking Engagement</option>
+<option value="other">Other</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block font-label text-sm font-medium text-on-surface-variant" for="message">Message</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 font-body text-on-surface focus:ring-1 focus:ring-outline transition-all duration-300 resize-none" id="message" placeholder="Detail your vision here..." rows="5"></textarea>
+</div>
+<div class="pt-4">
+<button class="btn-gradient w-full md:w-auto text-on-primary font-label font-bold text-base px-10 py-4 rounded-full hover:shadow-[0_8px_24px_rgba(74,75,215,0.25)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-2" type="submit">
+<span>Transmit</span>
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Contact Methods (Bento Sidebar) -->
+<div class="lg:col-span-5 space-y-6">
+<!-- Direct Email Card -->
+<a class="block bg-surface-container-low hover:bg-surface-container-highest rounded-2xl p-8 transition-colors duration-300 group" href="mailto:hello@aetherarchitect.com">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-headline text-title-md font-semibold text-on-surface mb-2">Direct Email</h3>
+<p class="font-body text-body-md text-on-surface-variant">hello@aetherarchitect.com</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined">mail</span>
+</div>
+</div>
+</a>
+<!-- Social Grid -->
+<div class="grid grid-cols-2 gap-6">
+<!-- LinkedIn -->
+<a class="block bg-surface-container-low hover:bg-surface-container-highest rounded-2xl p-6 transition-colors duration-300 group flex flex-col items-center text-center" href="#">
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface mb-4 group-hover:text-primary transition-colors duration-300">
+<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h3 class="font-headline text-body-lg font-semibold text-on-surface">LinkedIn</h3>
+</a>
+<!-- GitHub -->
+<a class="block bg-surface-container-low hover:bg-surface-container-highest rounded-2xl p-6 transition-colors duration-300 group flex flex-col items-center text-center" href="#">
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface mb-4 group-hover:text-primary transition-colors duration-300">
+<svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h3 class="font-headline text-body-lg font-semibold text-on-surface">GitHub</h3>
+</a>
+<!-- X (Twitter) -->
+<a class="block bg-surface-container-low hover:bg-surface-container-highest rounded-2xl p-6 transition-colors duration-300 group flex flex-col items-center text-center col-span-2" href="#">
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface mb-4 group-hover:text-primary transition-colors duration-300">
+<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.936H5.039z"></path>
+</svg>
+</div>
+<h3 class="font-headline text-body-lg font-semibold text-on-surface">X (Twitter)</h3>
+</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-[2rem] tonal-shift-no-borders flat flex flex-col md:flex-row justify-between items-center px-12 py-16 max-w-7xl mx-auto bg-[#f1f4f6] dark:bg-[#1a1c1e] text-[#4a4bd7] dark:text-[#6366f1] font-['Manrope'] text-[#2d3337] dark:text-[#f7f9fb] text-sm leading-relaxed mt-auto relative z-20">
+<div class="text-lg font-black text-[#2d3337] dark:text-[#f7f9fb] mb-4 md:mb-0">Aether Architect</div>
+<div class="text-[#2d3337]/50 dark:text-[#f7f9fb]/50 text-center md:text-left mb-6 md:mb-0">
+            © 2024 Aether Architect. Precision in every pixel.
+        </div>
+<div class="flex space-x-6">
+<a class="text-[#2d3337]/50 dark:text-[#f7f9fb]/50 hover:translate-y-[-2px] hover:text-[#4a4bd7] transition-all" href="#">GitHub</a>
+<a class="text-[#2d3337]/50 dark:text-[#f7f9fb]/50 hover:translate-y-[-2px] hover:text-[#4a4bd7] transition-all" href="#">LinkedIn</a>
+<a class="text-[#2d3337]/50 dark:text-[#f7f9fb]/50 hover:translate-y-[-2px] hover:text-[#4a4bd7] transition-all" href="#">Twitter</a>
+<a class="text-[#2d3337]/50 dark:text-[#f7f9fb]/50 hover:translate-y-[-2px] hover:text-[#4a4bd7] transition-all" href="#">Email</a>
+</div>
+</footer>
+</body></html>
