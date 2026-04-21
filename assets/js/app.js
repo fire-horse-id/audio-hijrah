@@ -48,3 +48,52 @@ function renderNav() {
     </div>
   </nav>`;
 }
+// THEME ENGINE
+(function(){
+  const theme = localStorage.getItem("fh_theme") || "dark";
+  if(theme === "dark") document.documentElement.classList.add("dark");
+})();
+
+function toggleTheme(){
+  const isDark = document.documentElement.classList.toggle("dark");
+  localStorage.setItem("fh_theme", isDark ? "dark" : "light");
+}
+
+// FETCH DATA
+async function loadData(){
+  try {
+    const res = await fetch("api.json");
+    return await res.json();
+  } catch (e) {
+    console.error("Gagal memuat data API", e);
+  }
+}
+
+// COMPONENTS
+function renderNav(){
+  return `
+  <nav class="nav">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+        <span class="text-2xl">🔥</span>
+        <h1 class="font-black text-xl tracking-tighter">FireHorse<span class="text-indigo-500">.id</span></h1>
+      </div>
+      <div class="hidden md:flex gap-8 items-center font-bold text-xs tracking-widest uppercase">
+        <a href="index.html" class="hover:text-indigo-500 transition">Home</a>
+        <a href="support.html" class="hover:text-indigo-500 transition">Support</a>
+        <a href="privacy.html" class="hover:text-indigo-500 transition">Privacy</a>
+        <a href="terms.html" class="hover:text-indigo-500 transition">Terms</a>
+        <button onclick="toggleTheme()" class="p-2 bg-slate-100 dark:bg-slate-800 rounded-xl">🌓</button>
+      </div>
+      <div class="md:hidden" onclick="toggleTheme()">🌓</div>
+    </div>
+  </nav>`;
+}
+
+function renderFooter(){
+  return `
+  <footer class="py-12 border-t border-white/5 text-center opacity-50 text-sm">
+    <p>© 2026 FireHorse.id — All Rights Reserved</p>
+  </footer>`;
+}
+
