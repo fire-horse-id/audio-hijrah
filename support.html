@@ -1,0 +1,56 @@
+<body>
+
+<div id="nav"></div>
+
+<section class="p-10">
+
+<h1 class="text-2xl font-bold mb-6">Support Center</h1>
+
+<!-- FAQ -->
+<div class="mb-6">
+<h3 class="font-bold">FAQ</h3>
+<p>Q: Tidak bisa play?<br>A: Cek internet</p>
+</div>
+
+<!-- CHAT BOT -->
+<div class="mb-6">
+<h3 class="font-bold">Chat Bot</h3>
+<input id="chatInput" class="border p-3 w-full" placeholder="Tanya sesuatu...">
+<div id="chatBox" class="mt-3"></div>
+</div>
+
+<!-- SOCIAL -->
+<div id="social"></div>
+
+</section>
+
+<div id="footer"></div>
+
+<script src="assets/js/app.js"></script>
+
+<script>
+document.getElementById("nav").innerHTML = renderNav();
+document.getElementById("footer").innerHTML = renderFooter();
+
+loadData().then(data=>{
+  document.getElementById("social").innerHTML = `
+  <h3 class="font-bold">Kontak</h3>
+  <p>Email: ${data.support.email}</p>
+  <p><a href="${data.support.whatsapp}">WhatsApp</a></p>
+  <p><a href="${data.support.telegram}">Telegram</a></p>
+  <p><a href="${data.support.youtube}">YouTube</a></p>
+  `;
+});
+
+// SIMPLE BOT
+document.getElementById("chatInput").addEventListener("keypress", e=>{
+  if(e.key==="Enter"){
+    const msg = e.target.value;
+    document.getElementById("chatBox").innerHTML +=
+      `<div>👤 ${msg}</div><div>🤖 Mohon tunggu...</div>`;
+    e.target.value="";
+  }
+});
+</script>
+
+</body>

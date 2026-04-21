@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FireHorse.id</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+
+<body>
+
+<div id="nav"></div>
+
+<!-- HERO -->
+<section class="text-center p-16 fade-in">
+  <h1 class="text-4xl font-bold mb-4">Audio Hijrah</h1>
+  <p id="desc" class="max-w-xl mx-auto opacity-80"></p>
+
+  <div class="mt-6">
+    <a id="playstore" class="btn">Download Playstore</a>
+  </div>
+
+  <div class="mt-6">
+    <img id="qr" class="mx-auto w-40"/>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="grid md:grid-cols-3 gap-6 p-8"></section>
+
+<!-- SPECS -->
+<section class="p-8">
+  <h2 class="text-xl font-bold mb-4">Spesifikasi</h2>
+  <ul id="specs"></ul>
+</section>
+
+<!-- TUTORIAL -->
+<section class="p-8">
+  <h2 class="text-xl font-bold mb-4">Tutorial</h2>
+  <ul id="tutorial"></ul>
+</section>
+
+<div id="footer"></div>
+
+<script src="assets/js/app.js"></script>
+
+<script>
+// LOAD DATA
+loadData().then(data=>{
+  document.getElementById("nav").innerHTML = renderNav();
+  document.getElementById("footer").innerHTML = renderFooter();
+
+  document.getElementById("desc").innerText = data.description;
+
+  document.getElementById("playstore").href = data.developer.playstore;
+
+  document.getElementById("qr").src =
+  `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${data.developer.playstore}`;
+
+  // FEATURES
+  document.getElementById("features").innerHTML =
+    data.features.map(f=>`<div class="card">${f}</div>`).join("");
+
+  // SPECS
+  document.getElementById("specs").innerHTML =
+    Object.values(data.specs).map(s=>`<li>• ${s}</li>`).join("");
+
+  // TUTORIAL
+  document.getElementById("tutorial").innerHTML =
+    data.tutorial.map(t=>`<li>• ${t}</li>`).join("");
+});
+</script>
+
+</body>
+</html>
