@@ -1,0 +1,33 @@
+{
+  "developer": "FireHorse.id",
+  "app_details": {
+    "name": "Audio Hijrah",
+    "features": [
+      "High Quality Audio",
+      "Offline Mode",
+      "Schedule Notification",
+      "Background Play",
+      "Auto Resume"
+    ],
+    "specs": "Android 5.0+, RAM 2GB+, 50MB Storage",
+    "devices": "Semua Android (Samsung, Xiaomi, Oppo, Vivo)",
+    "tutorial": "Download → Install → Login → Pilih Audio → Nikmati",
+    "playstore_url": "https://play.google.com/store/apps/details?id=com.firehorse.audiohijrah"
+  },
+  "support": {
+    "whatsapp": "https://wa.me/628123456789",
+    "telegram": "https://t.me/firehorse_id",
+    "youtube": "https://youtube.com/@firehorse",
+    "email": "support@firehorse.id"
+  },
+  "faq": [
+    {
+      "q": "Bagaimana cara instalasi?",
+      "a": "Download dari Playstore lalu install seperti biasa."
+    },
+    {
+      "q": "Apakah bisa offline?",
+      "a": "Ya, fitur offline tersedia."
+    }
+  ]
+}
