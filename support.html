@@ -2,76 +2,59 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Center | FireHorse.id</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/app.css">
-    <title>Support Center | FireHorse.id</title>
 </head>
-<body>
+<body class="dark:bg-slate-950">
     <div id="nav"></div>
-    <main class="max-w-4xl mx-auto px-6 py-12 animate-up">
-        <h1 class="text-4xl font-extrabold mb-10 text-center">Support <span class="gradient-text">Center</span></h1>
 
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="glass p-6 rounded-3xl flex flex-col h-[400px]">
-                <h3 class="font-bold mb-4 flex items-center gap-2">🤖 FireBot Assistant</h3>
-                <div id="chatBox" class="flex-1 overflow-y-auto space-y-4 text-sm pr-2">
-                    <div class="bg-indigo-500/10 p-3 rounded-2xl rounded-tl-none">Halo! Ada yang bisa kami bantu mengenai Audio Hijrah?</div>
+    <main class="max-w-4xl mx-auto px-6 py-20 animate-up">
+        <div class="glass p-10 rounded-[3rem] border-white/10 shadow-2xl">
+            <h1 class="text-4xl font-black mb-10 text-center">Support <span class="gradient-text">Center</span></h1>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="p-6 bg-white/5 rounded-2xl border border-white/5">
+                    <h3 class="font-bold mb-4 flex items-center gap-2">💬 Chat Bot</h3>
+                    <div id="chatBox" class="h-40 overflow-y-auto mb-4 text-sm opacity-70 space-y-2 border-b border-white/5 pb-2"></div>
+                    <input id="chatInput" class="w-full bg-slate-800 border-none rounded-xl p-3 text-sm text-white focus:ring-2 focus:ring-indigo-500" placeholder="Tanya sesuatu...">
                 </div>
-                <div class="mt-4 flex gap-2">
-                    <input id="chatInput" class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2 focus:outline-none focus:border-indigo-500" placeholder="Ketik pesan...">
-                    <button id="sendChat" class="bg-indigo-500 p-2 rounded-xl text-white">🚀</button>
+                
+                <div id="contactInfo" class="p-6 bg-white/5 rounded-2xl border border-white/5 space-y-4">
+                    <h3 class="font-bold">Hubungi Kami</h3>
+                    <p id="emailLink" class="text-sm opacity-70">Memuat kontak...</p>
+                    <div id="socialLinks" class="flex flex-col gap-2 text-indigo-400 font-bold"></div>
                 </div>
-            </div>
-
-            <div class="space-y-6">
-                <div class="glass p-6 rounded-3xl">
-                    <h3 class="font-bold mb-4">Frequently Asked Questions</h3>
-                    <details class="mb-3 group">
-                        <summary class="cursor-pointer font-medium list-none flex justify-between items-center bg-white/5 p-3 rounded-xl">
-                            Aplikasi tidak bisa memutar audio?
-                            <span class="group-open:rotate-180 transition">▼</span>
-                        </summary>
-                        <p class="p-3 text-sm opacity-70">Pastikan koneksi internet stabil atau gunakan fitur download untuk akses offline.</p>
-                    </details>
-                </div>
-                <div id="socialLinks" class="glass p-6 rounded-3xl flex justify-around items-center">
-                    </div>
             </div>
         </div>
     </main>
+
     <div id="footer"></div>
     <script src="assets/js/app.js"></script>
     <script>
-        loadData().then(data => {
-            document.getElementById("socialLinks").innerHTML = `
-                <a href="${data.support.whatsapp}" class="text-3xl hover:scale-125 transition">💬</a>
-                <a href="${data.support.telegram}" class="text-3xl hover:scale-125 transition">✈️</a>
-                <a href="${data.support.youtube}" class="text-3xl hover:scale-125 transition">📺</a>
-                <a href="mailto:${data.support.email}" class="text-3xl hover:scale-125 transition">📧</a>
-            `;
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("nav").innerHTML = renderNav();
+            document.getElementById("footer").innerHTML = renderFooter();
+
+            loadData().then(data => {
+                document.getElementById("emailLink").innerText = `Email: ${data.support.email}`;
+                document.getElementById("socialLinks").innerHTML = `
+                    <a href="${data.support.whatsapp}">WhatsApp Support</a>
+                    <a href="${data.support.telegram}">Telegram Community</a>
+                `;
+            });
+
+            document.getElementById("chatInput").addEventListener("keypress", e => {
+                if(e.key === "Enter" && e.target.value.trim() !== "") {
+                    const box = document.getElementById("chatBox");
+                    box.innerHTML += `<div class="text-indigo-400">👤 ${e.target.value}</div>`;
+                    box.innerHTML += `<div class="italic text-slate-500">🤖 Sedang memproses jawaban...</div>`;
+                    e.target.value = "";
+                    box.scrollTop = box.scrollHeight;
+                }
+            });
         });
-
-        const chatInput = document.getElementById("chatInput");
-        const chatBox = document.getElementById("chatBox");
-
-        function sendMessage() {
-            if(!chatInput.value.trim()) return;
-            chatBox.innerHTML += `<div class="bg-white/5 p-3 rounded-2xl rounded-tr-none ml-auto max-w-[80%] text-right">${chatInput.value}</div>`;
-            const userMsg = chatInput.value.toLowerCase();
-            chatInput.value = "";
-            
-            setTimeout(() => {
-                let reply = "Mohon maaf, saya belum mengerti. Silakan hubungi admin via WhatsApp.";
-                if(userMsg.includes("halo")) reply = "Halo! Ingin tanya tentang fitur atau instalasi?";
-                if(userMsg.includes("playstore")) reply = "Anda bisa mengunduh aplikasi melalui link di halaman utama.";
-                
-                chatBox.innerHTML += `<div class="bg-indigo-500 text-white p-3 rounded-2xl rounded-tl-none mr-auto max-w-[80%]">🤖 ${reply}</div>`;
-                chatBox.scrollTop = chatBox.scrollHeight;
-            }, 1000);
-        }
-
-        document.getElementById("sendChat").onclick = sendMessage;
-        chatInput.onkeypress = (e) => e.key === "Enter" && sendMessage();
     </script>
 </body>
 </html>
