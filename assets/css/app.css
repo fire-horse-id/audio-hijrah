@@ -2,72 +2,53 @@
   --primary: #6366f1;
   --secondary: #8b5cf6;
   --bg: #ffffff;
-  --text: #0f172a; /* Hitam pekat agar terbaca di mode terang */
+  --text: #0f172a; /* Gelap pekat untuk Light Mode */
+  --nav-bg: rgba(255, 255, 255, 0.8);
   --card-bg: rgba(99, 102, 241, 0.05);
 }
 
 .dark {
-  --bg: #020617; /* Biru gelap premium */
-  --text: #f8fafc;
+  --bg: #020617;
+  --text: #f8fafc; /* Terang untuk Dark Mode */
+  --nav-bg: rgba(2, 6, 23, 0.8);
   --card-bg: rgba(255, 255, 255, 0.03);
 }
 
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  transition: background 0.4s ease, color 0.4s ease;
-  padding-top: 80px; /* Ruang agar konten tidak tertutup Nav */
+  font-family: 'Inter', sans-serif;
+  transition: background 0.4s, color 0.4s;
+  padding-top: 70px;
   margin: 0;
 }
 
-/* NAVIGATION FIXED & RESPONSIVE */
 .nav-fixed {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 9999;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  height: 70px;
+  z-index: 1000;
+  backdrop-filter: blur(15px);
+  background: var(--nav-bg);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+  height: 65px;
   display: flex;
   align-items: center;
 }
 
-.dark .nav-fixed {
-  background: rgba(2, 6, 23, 0.8);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* UI ELEMENTS */
 .glass-card {
   background: var(--card-bg);
-  backdrop-filter: blur(12px);
   border: 1px solid rgba(99, 102, 241, 0.1);
-  border-radius: 2rem;
-  transition: all 0.3s ease;
+  border-radius: 1.5rem;
+  backdrop-filter: blur(10px);
 }
 
 .btn-premium {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: white !important;
-  font-weight: 800;
-  box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.4);
-  transition: all 0.3s ease;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 1rem;
+  transition: transform 0.2s;
 }
 
-.btn-premium:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 25px -5px rgba(99, 102, 241, 0.5);
-}
-
-/* ANIMATION */
-.fade-up {
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.btn-premium:hover { transform: scale(1.05); }
