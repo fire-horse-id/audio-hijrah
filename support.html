@@ -10,14 +10,14 @@
 <body>
     <div id="nav"></div>
     <main class="max-w-4xl mx-auto px-6 py-16">
-        <div class="glass-card p-8 md:p-12 shadow-2xl">
+        <div class="glass-card p-10 md:p-14 shadow-2xl fade-in">
             <h1 class="text-4xl font-black mb-8 uppercase tracking-tighter text-indigo-500">Support Center</h1>
-            <div class="grid md:grid-cols-2 gap-10">
-                <div id="contactInfo" class="space-y-6"></div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div id="socialLinks" class="space-y-6"></div>
                 <div class="space-y-4">
-                    <h3 class="font-bold text-sm uppercase tracking-widest opacity-50">Quick Chat</h3>
-                    <div class="bg-black/5 dark:bg-white/5 p-4 rounded-xl h-40 overflow-y-auto text-xs" id="chatBox"></div>
-                    <input id="chatInput" class="w-full p-3 rounded-xl bg-white/10 border border-indigo-500/20 text-sm outline-none" placeholder="Tanya sesuatu...">
+                    <h3 class="font-bold text-xs uppercase tracking-widest opacity-50">Quick Chat</h3>
+                    <div id="chatBox" class="h-40 overflow-y-auto bg-black/5 dark:bg-white/5 p-4 rounded-xl text-xs space-y-2"></div>
+                    <input id="chatInput" class="w-full p-3 bg-white/5 border border-indigo-500/20 rounded-xl outline-none" placeholder="Tanya sesuatu...">
                 </div>
             </div>
         </div>
@@ -25,15 +25,24 @@
     <div id="footer"></div>
     <script src="assets/js/app.js"></script>
     <script>
-        renderUI();
+        renderGlobalUI();
         loadData().then(data => {
             if(data) {
                 const s = data.support;
-                document.getElementById("contactInfo").innerHTML = `
-                    <p class="text-sm font-medium opacity-70">Email: ${s.email}</p>
+                document.getElementById("socialLinks").innerHTML = `
+                    <p class="font-bold opacity-70">Email: ${s.email}</p>
                     <a href="${s.whatsapp}" class="block p-4 rounded-xl bg-green-500/10 text-green-500 font-bold text-center">WhatsApp Support</a>
-                    <a href="${s.telegram}" class="block p-4 rounded-xl bg-sky-500/10 text-sky-500 font-bold text-center">Telegram Community</a>
+                    <a href="${s.telegram}" class="block p-4 rounded-xl bg-sky-500/10 text-sky-500 font-bold text-center">Telegram</a>
                 `;
+            }
+        });
+        const input = document.getElementById("chatInput");
+        input.addEventListener("keypress", (e) => {
+            if(e.key === "Enter" && input.value !== "") {
+                const box = document.getElementById("chatBox");
+                box.innerHTML += `<div><b>Anda:</b> ${input.value}</div>`;
+                setTimeout(() => box.innerHTML += `<div class="opacity-50"><b>Bot:</b> Menghubungkan ke admin...</div>`, 500);
+                input.value = "";
             }
         });
     </script>
