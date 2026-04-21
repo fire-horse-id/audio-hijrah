@@ -1,57 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+
 :root {
   --primary: #6366f1;
-  --secondary: #8b5cf6;
-  --bg: #ffffff;
-  --text: #111827;
+  --secondary: #a855f7;
+  --accent: #22d3ee;
+  --bg: #f8fafc;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --text: #0f172a;
+  --nav-bg: rgba(255, 255, 255, 0.7);
 }
 
 .dark {
-  --bg: #0f172a;
-  --text: #e5e7eb;
+  --bg: #020617;
+  --card-bg: rgba(30, 41, 59, 0.7);
+  --text: #f1f5f9;
+  --nav-bg: rgba(15, 23, 42, 0.8);
 }
 
 body {
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--text);
-  font-family: Inter, sans-serif;
-  transition: all .3s ease;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-x: hidden;
 }
 
-/* GLASS NAV */
-.nav {
-  backdrop-filter: blur(10px);
-  background: rgba(255,255,255,0.05);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+.glass {
+  backdrop-filter: blur(12px);
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
 }
 
-/* CARD PRO */
-.card {
-  border-radius: 16px;
-  padding: 20px;
-  background: linear-gradient(135deg,var(--primary),var(--secondary));
-  color: white;
-  transition: .4s;
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.card:hover {
-  transform: translateY(-5px) scale(1.02);
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* BUTTON */
-.btn {
-  padding: 12px 24px;
-  border-radius: 999px;
-  background: linear-gradient(135deg,var(--primary),var(--secondary));
-  color: white;
-  font-weight: bold;
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -5px var(--primary);
 }
 
-/* ANIMATION */
-.fade-in {
-  animation: fade .6s ease;
+.card-hover {
+  transition: all 0.3s ease;
 }
 
-@keyframes fade {
-  from {opacity:0; transform:translateY(10px);}
-  to {opacity:1; transform:translateY(0);}
+.card-hover:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary);
 }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-up { animation: slideUp 0.8s ease forwards; }
