@@ -2,12 +2,14 @@
   --primary: #6366f1;
   --secondary: #8b5cf6;
   --bg: #ffffff;
-  --text: #0f172a;
+  --text: #0f172a; /* Hitam pekat agar terbaca di mode terang */
+  --card-bg: rgba(99, 102, 241, 0.05);
 }
 
 .dark {
-  --bg: #020617;
+  --bg: #020617; /* Biru gelap premium */
   --text: #f8fafc;
+  --card-bg: rgba(255, 255, 255, 0.03);
 }
 
 body {
@@ -15,65 +17,57 @@ body {
   color: var(--text);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   transition: background 0.4s ease, color 0.4s ease;
-  padding-top: 85px; /* Ruang agar tidak tertutup Nav */
+  padding-top: 80px; /* Ruang agar konten tidak tertutup Nav */
   margin: 0;
 }
 
-/* NAVIGATION FIXED & PREMIUM */
-.nav {
+/* NAVIGATION FIXED & RESPONSIVE */
+.nav-fixed {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 9999;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.8);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  padding: 0.5rem 0;
+  height: 70px;
+  display: flex;
+  align-items: center;
 }
 
-.dark .nav {
+.dark .nav-fixed {
   background: rgba(2, 6, 23, 0.8);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* UI ELEMENTS */
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--card-bg);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(99, 102, 241, 0.15);
-  border-radius: 2.5rem;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  border-radius: 2rem;
   transition: all 0.3s ease;
-}
-
-.dark .glass-card {
-  background: rgba(255, 255, 255, 0.02);
 }
 
 .btn-premium {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: white !important;
   font-weight: 800;
-  letter-spacing: -0.025em;
-  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.4);
   transition: all 0.3s ease;
 }
 
 .btn-premium:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 20px 30px -10px rgba(99, 102, 241, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px -5px rgba(99, 102, 241, 0.5);
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #818cf8, #c084fc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
+/* ANIMATION */
 .fade-up {
   animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
