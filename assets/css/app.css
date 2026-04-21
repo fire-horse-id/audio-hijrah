@@ -1,67 +1,65 @@
 :root {
-    --primary: #6366f1;
-    --secondary: #8b5cf6;
-    --bg: #ffffff;
-    --text: #0f172a;
+  --primary: #6366f1;
+  --secondary: #8b5cf6;
+  --bg: #ffffff;
+  --text: #111827;
 }
 
 .dark {
-    --bg: #020617;
-    --text: #f8fafc;
+  --bg: #020617;
+  --text: #f8fafc;
 }
 
 body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', system-ui, sans-serif;
-    transition: all 0.4s ease;
-    padding-top: 80px;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  transition: all 0.4s ease;
+  padding-top: 80px;
 }
 
-/* Glass Navigation Fixed */
 .nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 9999;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    background: rgba(255, 255, 255, 0.7);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 9999;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .dark .nav {
-    background: rgba(2, 6, 23, 0.75);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(2, 6, 23, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Reusable UI */
 .glass {
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  border-radius: 2rem;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    transition: transform 0.2s, box-shadow 0.2s;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white !important;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s;
 }
 
 .btn-primary:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+  transform: scale(1.05);
 }
 
-.gradient-text {
-    background: linear-gradient(135deg, #818cf8, #c084fc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.fade-in {
+  animation: fade 0.8s ease forwards;
 }
 
-.animate-up {
-    animation: fadeInUp 0.7s ease-out;
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes fade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
