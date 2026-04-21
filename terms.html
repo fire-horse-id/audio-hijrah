@@ -3,41 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service | FireHorse.id</title>
+    <title>Legal | FireHorse.id</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
-<body class="dark:bg-slate-950">
+<body>
     <div id="nav"></div>
-
-    <main class="max-w-4xl mx-auto px-6 py-20 fade-in">
-        <div class="glass-card p-10 md:p-16 shadow-2xl border border-white/5">
-            <h1 class="text-4xl font-black mb-10 uppercase tracking-tighter">
-                Terms <span class="text-indigo-500">Service</span>
-            </h1>
-            
-            <div class="space-y-8 opacity-70 font-medium leading-relaxed">
-                <section>
-                    <h3 class="text-lg font-black text-indigo-500 uppercase tracking-widest mb-3">Ketentuan Penggunaan</h3>
-                    <p>Dengan menggunakan layanan kami, Anda setuju untuk tidak melakukan modifikasi ilegal pada aplikasi dan menggunakan konten di dalamnya hanya untuk tujuan yang baik (dakwah/pribadi).</p>
-                </section>
-
-                <section>
-                    <h3 class="text-lg font-black text-indigo-500 uppercase tracking-widest mb-3">Hak Kekayaan Intelektual</h3>
-                    <p>Seluruh materi audio dan merek FireHorse.id adalah hak milik kami sepenuhnya. Penggunaan komersial tanpa izin tertulis sangat dilarang.</p>
-                </section>
+    <main class="max-w-3xl mx-auto px-6 py-20">
+        <div class="glass-card p-10 md:p-16">
+            <h1 class="text-3xl font-black mb-8 uppercase tracking-tighter text-indigo-500">Privacy & Terms</h1>
+            <div class="space-y-6 opacity-80 text-sm leading-relaxed">
+                <p>Kami sangat menjaga privasi Anda. Semua data penggunaan aplikasi Audio Hijrah diproses secara lokal untuk memastikan keamanan informasi pribadi Anda.</p>
+                <p>Dengan menggunakan layanan kami, Anda setuju untuk mematuhi seluruh syarat dan ketentuan penggunaan konten dakwah yang tersedia di platform FireHorse.id.</p>
             </div>
         </div>
     </main>
-
     <div id="footer"></div>
-
     <script src="assets/js/app.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById("nav").innerHTML = renderNav();
-            document.getElementById("footer").innerHTML = renderFooter();
-        });
-    </script>
+    <script>renderUI();</script>
 </body>
 </html>
