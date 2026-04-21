@@ -9,60 +9,35 @@
 </head>
 <body>
     <div id="nav"></div>
-
     <main class="max-w-7xl mx-auto px-6">
-        <section class="flex flex-col md:flex-row items-center gap-12 py-16 md:py-24 fade-up">
+        <section class="flex flex-col md:flex-row items-center gap-12 py-16 md:py-24 fade-in">
             <div class="flex-1 text-center md:text-left space-y-6">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 text-indigo-500 text-[10px] font-black uppercase tracking-widest">
-                    🚀 Audio Hijrah v1.0
-                </div>
-                <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tighter" id="appTitle">Memuat...</h1>
-                <p id="appDesc" class="text-lg opacity-60 leading-relaxed max-w-xl mx-auto md:mx-0">Menyiapkan pengalaman audio terbaik untuk Anda.</p>
-                <div class="pt-4">
-                    <a id="playLink" href="#" class="btn-premium px-10 py-4 rounded-2xl inline-flex items-center shadow-xl">
-                        UNDUH SEKARANG
-                    </a>
-                </div>
+                <h1 class="text-5xl md:text-7xl font-black tracking-tighter" id="appTitle">Loading...</h1>
+                <p id="appDesc" class="text-lg opacity-60 max-w-xl mx-auto md:mx-0">Sedang memuat data...</p>
+                <a id="playLink" href="#" class="btn-premium shadow-xl">UNDUH SEKARANG</a>
             </div>
-
             <div class="flex-1 flex justify-center">
                 <div class="glass-card p-8 bg-white/5 shadow-2xl">
-                    <div class="bg-white p-3 rounded-2xl">
-                        <img id="qrCode" class="w-40 h-40">
-                    </div>
+                    <div class="bg-white p-3 rounded-2xl"><img id="qrCode" class="w-40 h-40"></div>
                 </div>
             </div>
         </section>
-
-        <section class="py-12">
-            <div id="featureGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-        </section>
+        <div id="featureGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6 py-12"></div>
     </main>
-
     <div id="footer"></div>
-
     <script src="assets/js/app.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById("nav").innerHTML = renderNav();
-            document.getElementById("footer").innerHTML = renderFooter();
-
-            loadData().then(data => {
-                if (data) {
-                    document.getElementById("appTitle").innerText = data.developer.app;
-                    document.getElementById("appDesc").innerText = data.description;
-                    document.getElementById("playLink").href = data.developer.playstore;
-                    document.getElementById("qrCode").src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(data.developer.playstore)}`;
-                    
-                    document.getElementById("featureGrid").innerHTML = data.features.map(f => `
-                        <div class="glass-card p-8 group hover:bg-indigo-500/5 transition-all">
-                            <div class="text-indigo-500 mb-4 text-xl">💎</div>
-                            <h4 class="font-black text-lg mb-2 uppercase tracking-tighter">${f}</h4>
-                            <p class="text-xs opacity-50 leading-relaxed">Fitur eksklusif untuk mendukung perjalanan hijrah Anda lebih mudah.</p>
-                        </div>
-                    `).join("");
-                }
-            });
+        renderGlobalUI();
+        loadData().then(data => {
+            if(data) {
+                document.getElementById("appTitle").innerText = data.developer.app;
+                document.getElementById("appDesc").innerText = data.description;
+                document.getElementById("playLink").href = data.developer.playstore;
+                document.getElementById("qrCode").src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(data.developer.playstore)}`;
+                document.getElementById("featureGrid").innerHTML = data.features.map(f => `
+                    <div class="glass-card p-8"><h4 class="font-black uppercase tracking-tighter">${f}</h4></div>
+                `).join("");
+            }
         });
     </script>
 </body>
