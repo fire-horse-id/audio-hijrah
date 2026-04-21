@@ -9,49 +9,23 @@
 </head>
 <body>
     <div id="nav-root"></div>
-    <main class="max-w-4xl mx-auto px-6 pt-32 fade-in">
-        <div class="glass-card p-12">
-            <h1 class="text-4xl font-black mb-12 uppercase tracking-tighter text-indigo-500">Support Center</h1>
+    <main class="max-w-2xl mx-auto px-6 pt-32 fade-in">
+        <div class="glass-card text-center">
+            <h1 class="text-3xl font-black mb-10 uppercase tracking-tighter text-indigo-500">Support Center</h1>
             
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="space-y-6" id="socialLinks">
-                    </div>
-                
-                <div class="space-y-4">
-                    <h4 class="text-[10px] font-black opacity-30 uppercase tracking-widest">AI Operator Bot</h4>
-                    <div id="chatBox" class="h-48 overflow-y-auto bg-black/5 dark:bg-white/5 rounded-2xl p-4 text-xs space-y-3">
-                        <div class="p-2 bg-indigo-500 text-white rounded-lg self-start inline-block">Halo! Ada kendala dengan Audio Hijrah?</div>
-                    </div>
-                    <div class="flex gap-2">
-                        <input id="chatInput" class="flex-1 bg-white/5 border border-white/10 p-3 rounded-xl outline-none focus:border-indigo-500 transition text-sm" placeholder="Ketik pesan...">
-                        <button onclick="sendChat()" class="p-3 bg-indigo-500 rounded-xl">➤</button>
-                    </div>
+            <div class="space-y-6 text-left">
+                <div class="opacity-40 text-[10px] font-bold uppercase tracking-widest mb-2 text-center">Quick Chat</div>
+                <div id="chatBox" class="h-64 overflow-y-auto bg-black/5 dark:bg-white/5 rounded-2xl p-6 mb-4">
+                    <div class="text-sm opacity-50 italic">Sistem siap membantu. Silakan kirimkan pertanyaan Anda...</div>
+                </div>
+                <div class="relative">
+                    <input id="chatInput" class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-indigo-500 transition text-sm" placeholder="Tanya sesuatu...">
                 </div>
             </div>
         </div>
     </main>
     <div id="footer-root"></div>
     <script src="assets/js/core.js"></script>
-    <script>
-        renderGlobalUI();
-        fetchAppData().then(data => {
-            if(data) {
-                const s = data.support;
-                document.getElementById("socialLinks").innerHTML = `
-                    <a href="${s.whatsapp}" class="block p-5 rounded-2xl bg-green-500/10 text-green-500 font-bold">WhatsApp Support</a>
-                    <a href="${s.telegram}" class="block p-5 rounded-2xl bg-sky-500/10 text-sky-500 font-bold">Telegram Community</a>
-                    <a href="${s.youtube}" class="block p-5 rounded-2xl bg-red-500/10 text-red-500 font-bold">YouTube Channel</a>
-                    <p class="text-xs opacity-40 text-center">Email: ${s.email}</p>
-                `;
-            }
-        });
-        function sendChat() {
-            const inp = document.getElementById("chatInput");
-            if(inp.value) {
-                document.getElementById("chatBox").innerHTML += `<div class="text-right"><span class="p-2 bg-white/10 rounded-lg inline-block">${inp.value}</span></div>`;
-                inp.value = "";
-            }
-        }
-    </script>
+    <script>renderGlobalUI();</script>
 </body>
 </html>
