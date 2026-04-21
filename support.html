@@ -5,46 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support | FireHorse.id</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div id="nav"></div>
-    <main class="max-w-4xl mx-auto px-6 py-16">
-        <div class="glass-card p-10 md:p-14 shadow-2xl fade-in">
-            <h1 class="text-4xl font-black mb-8 uppercase tracking-tighter text-indigo-500">Support Center</h1>
+    <div id="nav-root"></div>
+    <main class="max-w-4xl mx-auto px-6 pt-32 fade-in">
+        <div class="glass-card p-12">
+            <h1 class="text-4xl font-black mb-12 uppercase tracking-tighter text-indigo-500">Support Center</h1>
+            
             <div class="grid md:grid-cols-2 gap-12">
-                <div id="socialLinks" class="space-y-6"></div>
+                <div class="space-y-6" id="socialLinks">
+                    </div>
+                
                 <div class="space-y-4">
-                    <h3 class="font-bold text-xs uppercase tracking-widest opacity-50">Quick Chat</h3>
-                    <div id="chatBox" class="h-40 overflow-y-auto bg-black/5 dark:bg-white/5 p-4 rounded-xl text-xs space-y-2"></div>
-                    <input id="chatInput" class="w-full p-3 bg-white/5 border border-indigo-500/20 rounded-xl outline-none" placeholder="Tanya sesuatu...">
+                    <h4 class="text-[10px] font-black opacity-30 uppercase tracking-widest">AI Operator Bot</h4>
+                    <div id="chatBox" class="h-48 overflow-y-auto bg-black/5 dark:bg-white/5 rounded-2xl p-4 text-xs space-y-3">
+                        <div class="p-2 bg-indigo-500 text-white rounded-lg self-start inline-block">Halo! Ada kendala dengan Audio Hijrah?</div>
+                    </div>
+                    <div class="flex gap-2">
+                        <input id="chatInput" class="flex-1 bg-white/5 border border-white/10 p-3 rounded-xl outline-none focus:border-indigo-500 transition text-sm" placeholder="Ketik pesan...">
+                        <button onclick="sendChat()" class="p-3 bg-indigo-500 rounded-xl">➤</button>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
-    <div id="footer"></div>
-    <script src="assets/js/app.js"></script>
+    <div id="footer-root"></div>
+    <script src="assets/js/core.js"></script>
     <script>
         renderGlobalUI();
-        loadData().then(data => {
+        fetchAppData().then(data => {
             if(data) {
                 const s = data.support;
                 document.getElementById("socialLinks").innerHTML = `
-                    <p class="font-bold opacity-70">Email: ${s.email}</p>
-                    <a href="${s.whatsapp}" class="block p-4 rounded-xl bg-green-500/10 text-green-500 font-bold text-center">WhatsApp Support</a>
-                    <a href="${s.telegram}" class="block p-4 rounded-xl bg-sky-500/10 text-sky-500 font-bold text-center">Telegram</a>
+                    <a href="${s.whatsapp}" class="block p-5 rounded-2xl bg-green-500/10 text-green-500 font-bold">WhatsApp Support</a>
+                    <a href="${s.telegram}" class="block p-5 rounded-2xl bg-sky-500/10 text-sky-500 font-bold">Telegram Community</a>
+                    <a href="${s.youtube}" class="block p-5 rounded-2xl bg-red-500/10 text-red-500 font-bold">YouTube Channel</a>
+                    <p class="text-xs opacity-40 text-center">Email: ${s.email}</p>
                 `;
             }
         });
-        const input = document.getElementById("chatInput");
-        input.addEventListener("keypress", (e) => {
-            if(e.key === "Enter" && input.value !== "") {
-                const box = document.getElementById("chatBox");
-                box.innerHTML += `<div><b>Anda:</b> ${input.value}</div>`;
-                setTimeout(() => box.innerHTML += `<div class="opacity-50"><b>Bot:</b> Menghubungkan ke admin...</div>`, 500);
-                input.value = "";
+        function sendChat() {
+            const inp = document.getElementById("chatInput");
+            if(inp.value) {
+                document.getElementById("chatBox").innerHTML += `<div class="text-right"><span class="p-2 bg-white/10 rounded-lg inline-block">${inp.value}</span></div>`;
+                inp.value = "";
             }
-        });
+        }
     </script>
 </body>
 </html>
