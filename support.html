@@ -9,56 +9,83 @@
 </head>
 <body class="dark:bg-slate-950">
     <div id="nav"></div>
-    <main class="max-w-4xl mx-auto px-6 py-20 fade-in">
-        <div class="glass-card p-10 shadow-2xl">
-            <h1 class="text-4xl font-black mb-10 uppercase tracking-tighter">Support <span class="text-indigo-500">Center</span></h1>
+
+    <main class="max-w-4xl mx-auto px-6 py-20 fade-up">
+        <div class="glass-card p-10 md:p-14 shadow-2xl border border-white/5">
+            <h1 class="text-4xl font-black mb-12 uppercase tracking-tighter">Support <span class="text-indigo-500">Center</span></h1>
             
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="space-y-8">
                     <div>
-                        <h3 class="font-black text-xs uppercase tracking-[0.2em] mb-4 opacity-50">Kontak Resmi</h3>
-                        <div id="social" class="space-y-4"></div>
-                    </div>
-                    <div>
-                        <h3 class="font-black text-xs uppercase tracking-[0.2em] mb-4 opacity-50">FAQ</h3>
-                        <p class="text-sm font-bold">Q: Audio tidak berputar?</p>
-                        <p class="text-xs opacity-50">A: Pastikan koneksi internet stabil atau gunakan fitur offline.</p>
+                        <h3 class="font-black text-[10px] uppercase tracking-[0.2em] mb-6 text-indigo-500">Official Channel</h3>
+                        <div id="socialLinks" class="space-y-4">
+                            </div>
                     </div>
                 </div>
 
                 <div class="space-y-6">
-                    <h3 class="font-black text-xs uppercase tracking-[0.2em] opacity-50">Quick Chat</h3>
-                    <div class="relative">
-                        <input id="chatInput" class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition" placeholder="Tanya sesuatu...">
+                    <h3 class="font-black text-[10px] uppercase tracking-[0.2em] text-indigo-500">Quick Assistant</h3>
+                    <div class="glass-card p-6 bg-white/5 border border-white/5">
+                        <div id="chatDisplay" class="h-40 overflow-y-auto mb-4 text-xs font-medium space-y-4 custom-scrollbar">
+                            <div class="opacity-40 italic">Halo! Ada yang bisa kami bantu hari ini?</div>
+                        </div>
+                        <input id="chatInput" type="text" 
+                               class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition" 
+                               placeholder="Ketik pesan Anda...">
                     </div>
-                    <div id="chatBox" class="space-y-3 max-h-40 overflow-y-auto pr-2 custom-scrollbar"></div>
                 </div>
             </div>
         </div>
     </main>
+
     <div id="footer"></div>
+
     <script src="assets/js/app.js"></script>
     <script>
-        document.getElementById("nav").innerHTML = renderNav();
-        document.getElementById("footer").innerHTML = renderFooter();
-        
-        loadData().then(data => {
-            if(data) {
-                document.getElementById("social").innerHTML = `
-                    <a href="mailto:${data.support.email}" class="block p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-indigo-500/30 transition font-bold text-sm">✉️ Email Support</a>
-                    <a href="${data.support.whatsapp}" class="block p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-indigo-500/30 transition font-bold text-sm text-green-500">💬 WhatsApp Premium</a>
-                `;
-            }
-        });
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("nav").innerHTML = renderNav();
+            document.getElementById("footer").innerHTML = renderFooter();
 
-        document.getElementById("chatInput").addEventListener("keypress", e => {
-            if(e.key === "Enter" && e.target.value.trim() !== "") {
-                const box = document.getElementById("chatBox");
-                box.innerHTML += `<div class="text-[10px] font-black opacity-30 uppercase tracking-widest mt-4">You</div><div class="text-sm font-medium">${e.target.value}</div>`;
-                box.innerHTML += `<div class="text-[10px] font-black text-indigo-500 uppercase tracking-widest mt-2">Assistant</div><div class="text-sm opacity-50 italic">Mohon tunggu, tim kami segera membalas...</div>`;
-                e.target.value = "";
-                box.scrollTop = box.scrollHeight;
-            }
+            // Load Data Kontak dari API
+            loadData().then(data => {
+                if (data) {
+                    const s = data.support;
+                    document.getElementById("socialLinks").innerHTML = `
+                        <a href="mailto:${s.email}" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-indigo-500/10 transition border border-white/5">
+                            <span class="text-xl">✉️</span>
+                            <span class="text-sm font-bold opacity-80">${s.email}</span>
+                        </a>
+                        <a href="${s.whatsapp}" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-green-500/10 transition border border-white/5">
+                            <span class="text-xl">💬</span>
+                            <span class="text-sm font-bold text-green-500">WhatsApp Premium</span>
+                        </a>
+                        <a href="${s.telegram}" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-sky-500/10 transition border border-white/5">
+                            <span class="text-xl">✈️</span>
+                            <span class="text-sm font-bold text-sky-500">Telegram Community</span>
+                        </a>
+                    `;
+                }
+            });
+
+            // Chat Assistant Logic
+            const input = document.getElementById("chatInput");
+            const display = document.getElementById("chatDisplay");
+
+            input.addEventListener("keypress", (e) => {
+                if (e.key === "Enter" && input.value.trim() !== "") {
+                    const userMsg = input.value;
+                    display.innerHTML += `<div class="text-indigo-400 font-bold uppercase tracking-widest text-[9px]">You</div><div class="mb-2">${userMsg}</div>`;
+                    
+                    // Bot Response
+                    setTimeout(() => {
+                        display.innerHTML += `<div class="text-white font-bold uppercase tracking-widest text-[9px]">Assistant</div><div class="opacity-50 italic">Pesan Anda telah kami terima. Tim support FireHorse akan segera menghubungi Anda.</div>`;
+                        display.scrollTop = display.scrollHeight;
+                    }, 600);
+
+                    input.value = "";
+                    display.scrollTop = display.scrollHeight;
+                }
+            });
         });
     </script>
 </body>
