@@ -1,4 +1,17 @@
-// THEME INITIALIZATION
+// ===== 🔐 OBFUSCATION PROTECTION START =====
+eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};
+while(c--){if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}
+return p}('0.1("Protected Mode Active");',2,2,'console|log'.split('|'),0,{}))
+// ===== 🔐 OBFUSCATION PROTECTION END =====
+
+
+// 🔐 THEME ENGINE (Persisted)
+(function(){
+  const t = localStorage.getItem("fh_theme");
+  if(t === "dark") document.documentElement.classList.add("dark");
+})();
+
+// THEME ENGINE
 (function() {
     const saved = localStorage.getItem("fh_theme") || "dark";
     if (saved === "dark") document.documentElement.classList.add("dark");
@@ -7,46 +20,52 @@
 function toggleTheme() {
     const isDark = document.documentElement.classList.toggle("dark");
     localStorage.setItem("fh_theme", isDark ? "dark" : "light");
-    updateThemeIcon();
+    renderGlobalUI();
 }
 
-function updateThemeIcon() {
-    const btn = document.getElementById("theme-toggle");
-    if(btn) btn.innerHTML = document.documentElement.classList.contains("dark") ? "☀️" : "🌙";
+// LOAD API DATA
+async function loadData() {
+    try {
+        const res = await fetch("api.json");
+        if (!res.ok) throw new Error();
+        return await res.json();
+    } catch (e) {
+        console.error("Gagal memuat api.json");
+        return null;
+    }
 }
 
-// GLOBAL UI RENDERER
-function renderGlobalUI() {
-    const navHTML = `
-    <nav class="nav-fixed">
-        <div class="nav-container">
-            <a href="index.html" class="flex items-center gap-2 font-black tracking-tighter">
-                <img src="https://img.icons8.com/color/48/diamond.png" class="w-6 h-6"> FIREHORSE
-            </a>
-            <div class="nav-links">
-                <a href="index.html" class="nav-item">Home</a>
-                <a href="support.html" class="nav-item">Support</a>
-                <a href="privacy.html" class="nav-item">Privacy</a>
-                <a href="terms.html" class="nav-item">Terms</a>
+// RENDER NAV & FOOTER
+function renderNav() {
+    const isDark = document.documentElement.classList.contains("dark");
+    return `
+    <div class="nav-fixed">
+        <div class="nav-content">
+            <a href="index.html" class="font-black text-lg tracking-tighter">💎 FIREHORSE</a>
+            <div class="flex items-center gap-3 sm:gap-6">
+                <div class="flex gap-3 sm:gap-6 text-[10px] sm:text-xs font-bold uppercase tracking-widest">
+                    <a href="index.html">Home</a>
+                    <a href="support.html">Support</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                </div>
+                <button onclick="toggleTheme()" class="p-2 rounded-lg bg-indigo-500/10">
+                    ${isDark ? '☀️' : '🌙'}
+                </button>
             </div>
-            <button onclick="toggleTheme()" id="theme-toggle" class="text-lg"></button>
         </div>
-    </nav>`;
-    
-    const footerHTML = `
-    <footer class="py-10 text-center opacity-40 text-[10px] font-bold uppercase tracking-[0.2em]">
+    </div>`;
+}
+
+function renderFooter() {
+    return `<footer class="py-10 text-center opacity-40 text-[10px] font-bold uppercase tracking-widest">
         © 2026 FireHorse.id — Premium Digital Service
     </footer>`;
+}
 
-    const navEl = document.getElementById("nav-root");
-    const footEl = document.getElementById("footer-root");
-    if(navEl) navEl.innerHTML = navHTML;
-    if(footEl) footEl.innerHTML = footerHTML;
-
-    // Auto-Set Active Badge based on filename
-    const path = window.location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll(".nav-item").forEach(el => {
-        if(el.getAttribute("href") === path) el.classList.add("active");
-    });
-    updateThemeIcon();
+function renderGlobalUI() {
+    const n = document.getElementById("nav");
+    const f = document.getElementById("footer");
+    if(n) n.innerHTML = renderNav();
+    if(f) f.innerHTML = renderFooter();
 }
