@@ -1,0 +1,38 @@
+{
+  "developer": {
+    "name": "FireHorse.id",
+    "app": "Audio Hijrah",
+    "playstore": "https://play.google.com/store/apps/details?id=com.audio.hijrah"
+  },
+
+  "description": "Platform audio islami modern untuk kajian, podcast hijrah dan konten religi premium.",
+
+  "features": [
+    "Streaming Audio HD",
+    "Offline Download",
+    "Smart Playlist",
+    "Bookmark & History",
+    "Dark Mode",
+    "AI Recommendation"
+  ],
+
+  "specs": {
+    "android": "Android 8+",
+    "size": "Ringan & Optimized",
+    "device": "All Device Support"
+  },
+
+  "tutorial": [
+    "Install aplikasi dari Playstore",
+    "Login atau gunakan Guest",
+    "Pilih audio",
+    "Play / Download"
+  ],
+
+  "support": {
+    "email": "support@firehorse.id",
+    "whatsapp": "https://wa.me/628xxxx",
+    "telegram": "https://t.me/firehorse",
+    "youtube": "https://youtube.com/@firehorse"
+  }
+}
