@@ -1,4 +1,4 @@
-// THEME ENGINE
+// 🔐 THEME ENGINE
 (function() {
     const saved = localStorage.getItem("fh_theme") || "dark";
     if (saved === "dark") document.documentElement.classList.add("dark");
@@ -7,52 +7,54 @@
 function toggleTheme() {
     const isDark = document.documentElement.classList.toggle("dark");
     localStorage.setItem("fh_theme", isDark ? "dark" : "light");
-    renderGlobalUI();
+    updateThemeIcon();
 }
 
-// LOAD API DATA
-async function loadData() {
+function updateThemeIcon() {
+    const btn = document.getElementById("theme-toggle");
+    if(btn) btn.innerHTML = document.documentElement.classList.contains("dark") ? "☀️" : "🌙";
+}
+
+// 📡 DATA LOADER
+async function fetchAppData() {
     try {
         const res = await fetch("api.json");
-        if (!res.ok) throw new Error();
         return await res.json();
     } catch (e) {
-        console.error("Gagal memuat api.json");
+        console.error("Gagal memuat API");
         return null;
     }
 }
 
-// RENDER NAV & FOOTER
-function renderNav() {
-    const isDark = document.documentElement.classList.contains("dark");
-    return `
-    <div class="nav-fixed">
-        <div class="nav-content">
-            <a href="index.html" class="font-black text-lg tracking-tighter">💎 FIREHORSE</a>
-            <div class="flex items-center gap-3 sm:gap-6">
-                <div class="flex gap-3 sm:gap-6 text-[10px] sm:text-xs font-bold uppercase tracking-widest">
-                    <a href="index.html">Home</a>
-                    <a href="support.html">Support</a>
-                    <a href="privacy.html">Privacy</a>
-                    <a href="terms.html">Terms</a>
-                </div>
-                <button onclick="toggleTheme()" class="p-2 rounded-lg bg-indigo-500/10">
-                    ${isDark ? '☀️' : '🌙'}
-                </button>
-            </div>
-        </div>
-    </div>`;
-}
-
-function renderFooter() {
-    return `<footer class="py-10 text-center opacity-40 text-[10px] font-bold uppercase tracking-widest">
-        © 2026 FireHorse.id — Premium Digital Service
-    </footer>`;
-}
-
+// 🛠 GLOBAL UI RENDERER
 function renderGlobalUI() {
-    const n = document.getElementById("nav");
-    const f = document.getElementById("footer");
-    if(n) n.innerHTML = renderNav();
-    if(f) f.innerHTML = renderFooter();
+    const navHTML = `
+    <nav class="nav-fixed">
+        <div class="nav-container">
+            <a href="index.html" class="font-extrabold tracking-tighter text-lg">FIREHORSE<span class="text-indigo-500">.ID</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="support.html" class="nav-item">Support</a>
+                <a href="privacy.html" class="nav-item">Privacy</a>
+            </div>
+            <button onclick="toggleTheme()" id="theme-toggle" class="p-2 text-xl"></button>
+        </div>
+    </nav>`;
+    
+    const footerHTML = `
+    <footer class="py-12 text-center opacity-30 text-[10px] font-bold uppercase tracking-[0.3em]">
+        © 2026 FireHorse.id — Premium Digital Experience
+    </footer>`;
+
+    const navEl = document.getElementById("nav-root");
+    const footEl = document.getElementById("footer-root");
+    if(navEl) navEl.innerHTML = navHTML;
+    if(footEl) footEl.innerHTML = footerHTML;
+
+    // Set Active Badge
+    const path = window.location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll(".nav-item").forEach(el => {
+        if(el.getAttribute("href") === path) el.classList.add("active");
+    });
+    updateThemeIcon();
 }
