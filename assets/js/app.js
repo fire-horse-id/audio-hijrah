@@ -31,3 +31,20 @@ function renderNav() {
   </nav>
   <div class="h-24"></div>`;
 }
+
+function renderNav() {
+  return `
+  <nav class="nav flex justify-between items-center shadow-lg">
+    <div class="flex items-center gap-2">
+      <span class="text-2xl">🔥</span>
+      <h1 class="font-extrabold text-lg tracking-tighter">FireHorse<span class="text-indigo-500">.id</span></h1>
+    </div>
+    
+    <div class="flex gap-4 md:gap-8 items-center font-semibold text-xs md:text-sm uppercase tracking-widest">
+      <a href="index.html" class="hover:text-indigo-400 transition">Home</a>
+      <a href="support.html" class="hover:text-indigo-400 transition">Support</a>
+      <a href="privacy.html" class="hover:text-indigo-400 transition">Privacy</a>
+      <button onclick="toggleTheme()" class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition">🌓</button>
+    </div>
+  </nav>`;
+}
