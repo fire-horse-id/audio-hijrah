@@ -63,3 +63,21 @@ body {
 }
 
 .animate-up { animation: slideUp 0.8s ease forwards; }
+
+/* Update Glass Nav di app.css */
+.nav {
+  position: fixed; /* Membuat nav tetap di atas saat di-scroll */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Memastikan nav di atas konten lain */
+  backdrop-filter: blur(12px);
+  background: rgba(15, 23, 42, 0.7); /* Warna gelap transparan agar kontras */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1.5rem;
+}
+
+/* Tambahkan padding pada body agar konten tidak tertutup nav */
+body {
+  padding-top: 70px;
+}
