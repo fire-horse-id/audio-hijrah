@@ -7,12 +7,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
-<body>
+<body class="dark:bg-slate-950">
     <div id="nav"></div>
-    <main class="max-w-4xl mx-auto px-6 py-20 fade-in">
-        <div class="glass p-10">
-            <h1 class="text-4xl font-black mb-10">Support Center</h1>
-            <div id="social" class="flex flex-col gap-4 text-indigo-500 font-bold"></div>
+    <main class="max-w-4xl mx-auto px-6 py-20 fade-up">
+        <div class="glass-card p-12 shadow-2xl">
+            <h1 class="text-4xl font-black mb-10 text-center uppercase tracking-tighter">Support <span class="gradient-text">Center</span></h1>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <h3 class="font-black text-indigo-500 uppercase tracking-widest text-xs">Direct Support</h3>
+                    <div id="social" class="flex flex-col gap-4"></div>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="font-black text-indigo-500 uppercase tracking-widest text-xs">Quick Assistant</h3>
+                    <input id="chatInput" class="w-full bg-indigo-500/5 border border-indigo-500/10 rounded-2xl p-4 text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Ada yang bisa kami bantu?">
+                    <div id="chatBox" class="text-[10px] font-bold opacity-40 uppercase tracking-widest mt-4"></div>
+                </div>
+            </div>
         </div>
     </main>
     <div id="footer"></div>
@@ -22,8 +32,8 @@
         document.getElementById("footer").innerHTML = renderFooter();
         loadData().then(data => {
             document.getElementById("social").innerHTML = `
-                <a href="mailto:${data.support.email}">📧 Email Support</a>
-                <a href="${data.support.whatsapp}">📱 WhatsApp</a>
+                <a href="mailto:${data.support.email}" class="flex items-center gap-3 font-bold opacity-70 hover:opacity-100 transition"><span>✉️</span> ${data.support.email}</a>
+                <a href="${data.support.whatsapp}" class="flex items-center gap-3 font-bold opacity-70 hover:opacity-100 transition"><span>💬</span> WhatsApp Premium</a>
             `;
         });
     </script>
