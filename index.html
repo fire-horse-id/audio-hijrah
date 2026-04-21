@@ -1,6 +1,17 @@
 <!DOCTYPE html>
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Langsung masukkan nav agar tidak menunggu loadData yang mungkin lambat
+  document.getElementById("nav").innerHTML = renderNav();
+  
+  loadData().then(data => {
+    document.getElementById("footer").innerHTML = renderFooter();
+    // ... sisa kode load data Anda ...
+  });
+});
 <html lang="id">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audio Hijrah | FireHorse.id</title>
